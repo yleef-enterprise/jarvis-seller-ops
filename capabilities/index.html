@@ -1,0 +1,436 @@
+<title>JARVIS Capability Schedule</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=Public+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --ground:#f7f8f7; --surface:#ffffff; --ink:#16202b; --muted:#5e6b70;
+    --rule:#dde2e1; --rule-strong:#c3cbc9;
+    --accent:#1d6a63; --accent-soft:#e8f1ef;
+    --warn:#9a6318; --warn-soft:#f8f0e3;
+    --chip:#eef1f0;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#10161b; --surface:#161e24; --ink:#e4eae8; --muted:#94a3a6;
+      --rule:#27333a; --rule-strong:#3a4950;
+      --accent:#4aa79c; --accent-soft:#16302d;
+      --warn:#d6a05c; --warn-soft:#2c2318;
+      --chip:#1d272d;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#10161b; --surface:#161e24; --ink:#e4eae8; --muted:#94a3a6;
+    --rule:#27333a; --rule-strong:#3a4950;
+    --accent:#4aa79c; --accent-soft:#16302d;
+    --warn:#d6a05c; --warn-soft:#2c2318;
+    --chip:#1d272d;
+  }
+
+  *{box-sizing:border-box}
+  body{
+    background:var(--ground); color:var(--ink);
+    font-family:"Public Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:15px; line-height:1.6; margin:0;
+    padding-block:0 64px; padding-left:20px; padding-right:20px;
+  }
+  .wrap{max-width:1120px; margin:0 auto}
+
+  /* ---- masthead ---- */
+  header.mast{
+    border-bottom:2px solid var(--ink);
+    padding-block:52px 22px; margin-bottom:0;
+  }
+  .eyebrow{
+    font-size:11px; letter-spacing:.16em; text-transform:uppercase;
+    color:var(--accent); font-weight:700; margin:0 0 14px;
+  }
+  h1{
+    font-family:Spectral,Georgia,serif; font-weight:600;
+    font-size:clamp(30px,5vw,50px); line-height:1.08; letter-spacing:-.015em;
+    margin:0 0 14px; text-wrap:balance;
+  }
+  .standfirst{
+    font-family:Spectral,Georgia,serif; font-size:clamp(16px,2vw,19px);
+    color:var(--muted); max-width:62ch; margin:0 0 30px; line-height:1.5;
+  }
+  .facts{display:flex; flex-wrap:wrap; gap:10px 40px; margin:0; padding:0; list-style:none}
+  .facts div{display:flex; flex-direction:column}
+  .facts b{
+    font-family:"JetBrains Mono",ui-monospace,monospace; font-size:23px;
+    font-weight:500; font-variant-numeric:tabular-nums; line-height:1.2;
+  }
+  .facts span{font-size:11px; letter-spacing:.09em; text-transform:uppercase; color:var(--muted); margin-top:3px}
+
+  /* ---- method note ---- */
+  .method{
+    border-left:3px solid var(--accent); background:var(--accent-soft);
+    padding:16px 20px; margin:30px 0 0; font-size:14px; max-width:74ch;
+  }
+  .method p{margin:0 0 8px}
+  .method p:last-child{margin-bottom:0}
+
+  /* ---- layout ---- */
+  .cols{display:grid; grid-template-columns:200px 1fr; gap:52px; margin-top:44px; align-items:start}
+  @media (max-width:860px){ .cols{grid-template-columns:1fr; gap:0} nav.index{display:none} }
+
+  nav.index{position:sticky; top:24px}
+  nav.index h2{
+    font-size:11px; letter-spacing:.12em; text-transform:uppercase;
+    color:var(--muted); margin:0 0 12px; font-weight:700;
+  }
+  nav.index ol{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:1px}
+  nav.index a{
+    display:flex; gap:9px; text-decoration:none; color:var(--muted);
+    font-size:13px; padding:3px 0; line-height:1.35;
+  }
+  nav.index a:hover{color:var(--accent)}
+  nav.index a em{
+    font-style:normal; font-family:"JetBrains Mono",monospace; font-size:11px;
+    color:var(--rule-strong); min-width:16px;
+  }
+
+  /* ---- sections ---- */
+  section.area{padding-block:30px; border-top:1px solid var(--rule)}
+  section.area:first-of-type{border-top:none; padding-top:6px}
+  .ahead{display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; margin-bottom:6px}
+  .ahead h3{
+    font-family:Spectral,Georgia,serif; font-weight:600; font-size:24px;
+    margin:0; letter-spacing:-.01em;
+  }
+  .count{
+    font-family:"JetBrains Mono",monospace; font-size:12px; color:var(--accent);
+    background:var(--accent-soft); padding:2px 8px; border-radius:3px;
+    font-variant-numeric:tabular-nums; white-space:nowrap;
+  }
+  .lede{color:var(--muted); font-size:14px; margin:0 0 18px; max-width:68ch}
+
+  dl{margin:0; display:grid; gap:0}
+  dl > div{
+    display:grid; grid-template-columns:190px 1fr; gap:20px;
+    padding:11px 0; border-bottom:1px solid var(--rule);
+  }
+  dl > div:last-child{border-bottom:none}
+  @media (max-width:620px){ dl > div{grid-template-columns:1fr; gap:4px} }
+  dt{font-weight:700; font-size:14px; line-height:1.45}
+  dd{margin:0; color:var(--muted); font-size:14px}
+  code{
+    font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12.5px;
+    background:var(--chip); padding:1px 5px; border-radius:3px;
+    color:var(--ink); white-space:nowrap;
+  }
+  .paths{margin-top:5px; display:flex; flex-wrap:wrap; gap:5px}
+
+  /* ---- caveats ---- */
+  .caveats{margin-top:52px; border-top:2px solid var(--ink); padding-top:30px}
+  .caveats h3{font-family:Spectral,Georgia,serif; font-size:24px; margin:0 0 6px; font-weight:600}
+  .cav{
+    border-left:3px solid var(--warn); background:var(--warn-soft);
+    padding:14px 18px; margin-top:14px; font-size:14px;
+  }
+  .cav b{display:block; margin-bottom:4px; color:var(--ink); font-size:14px}
+  .cav span{color:var(--muted)}
+
+  footer{
+    margin-top:52px; padding-top:20px; border-top:1px solid var(--rule);
+    font-size:13px; color:var(--muted); display:flex; justify-content:space-between;
+    gap:16px; flex-wrap:wrap;
+  }
+  a{color:var(--accent)}
+  :focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+</style>
+
+<div class="wrap">
+
+<header class="mast">
+  <p class="eyebrow">Schedule A &middot; Yleef Enterprise</p>
+  <h1>JARVIS Capability Schedule</h1>
+  <p class="standfirst">Every capability in the platform, compiled by parsing the source rather than reading the marketing. A Hinglish voice-and-chat assistant fused to a seller-operations back office for Indian marketplaces.</p>
+  <ul class="facts">
+    <div><b>602</b><span>HTTP endpoints</span></div>
+    <div><b>44</b><span>router modules</span></div>
+    <div><b>4,811</b><span>backend tests</span></div>
+    <div><b>77.9%</b><span>coverage, 70% floor</span></div>
+    <div><b>5</b><span>marketplaces</span></div>
+    <div><b>0</b><span>paying customers</span></div>
+  </ul>
+</header>
+
+<div class="method">
+  <p><b>How this was compiled.</b> Every route decorator under <code>backend/</code> was parsed for method, path and handler name &mdash; 602 endpoints across 69 files. Counts below are that parse, not an estimate.</p>
+  <p>An endpoint existing is not proof it does useful work. Where a capability was opened and read, it is described in the terms the code actually supports. Everything found to be narrower than its name suggests is listed under <a href="#caveats">Verified caveats</a> rather than quietly dropped.</p>
+</div>
+
+<div class="cols">
+
+<nav class="index">
+  <h2>Contents</h2>
+  <ol>
+    <li><a href="#s1"><em>01</em> Marketplace integrations</a></li>
+    <li><a href="#s2"><em>02</em> The write path</a></li>
+    <li><a href="#s3"><em>03</em> Listings &amp; content</a></li>
+    <li><a href="#s4"><em>04</em> Pricing &amp; demand</a></li>
+    <li><a href="#s5"><em>05</em> Advertising</a></li>
+    <li><a href="#s6"><em>06</em> Deals &amp; sale events</a></li>
+    <li><a href="#s7"><em>07</em> Returns &amp; recovery</a></li>
+    <li><a href="#s8"><em>08</em> Logistics</a></li>
+    <li><a href="#s9"><em>09</em> Finance &amp; tax</a></li>
+    <li><a href="#s10"><em>10</em> Account health &amp; risk</a></li>
+    <li><a href="#s11"><em>11</em> Reviews &amp; customers</a></li>
+    <li><a href="#s12"><em>12</em> B2B &amp; wholesale</a></li>
+    <li><a href="#s13"><em>13</em> Inventory &amp; orders</a></li>
+    <li><a href="#s14"><em>14</em> AI assistant</a></li>
+    <li><a href="#s15"><em>15</em> Voice &amp; desktop</a></li>
+    <li><a href="#s16"><em>16</em> Security &amp; tenancy</a></li>
+    <li><a href="#s17"><em>17</em> Alerts</a></li>
+    <li><a href="#s18"><em>18</em> Platform &amp; ops</a></li>
+    <li><a href="#caveats"><em>&mdash;</em> Verified caveats</a></li>
+  </ol>
+</nav>
+
+<main>
+
+<section class="area" id="s1">
+  <div class="ahead"><h3>Marketplace integrations</h3><span class="count">67 endpoints</span></div>
+  <p class="lede">Five marketplaces plus quick-commerce and social channels. Read paths are broad; write coverage differs per platform and is set out in section 02.</p>
+  <dl>
+    <div><dt>Amazon</dt><dd>Inventory, orders and listing sync; a Playwright seller-portal driver with live-verified Seller Central URLs (the <code>/myinventory/inventory</code> path, recorded after the older one began redirecting).</dd></div>
+    <div><dt>Flipkart</dt><dd>Inventory and order sync, listing management, dedicated Playwright driver for the Seller Hub.</dd></div>
+    <div><dt>Meesho</dt><dd>Supplier-panel sync and a Playwright driver against the v3 supplier panel.</dd></div>
+    <div><dt>Myntra</dt><dd>Inventory sync, orders, returns, and style-upload with pre-submission validation.<div class="paths"><code>/api/myntra/style/validate</code><code>/api/myntra/returns</code></div></dd></div>
+    <div><dt>Shopify</dt><dd>The deepest integration: products, price and SEO fields, stock updates, low-stock reporting, order summaries, return logging and resolution, revenue / top-product / cancellation-rate analytics, plus inbound and outbound webhooks and session management.<div class="paths"><code>23 endpoints</code><code>/api/shopify/webhooks/receive</code></div></dd></div>
+    <div><dt>Quick commerce</dt><dd>Dark-store allocation, delivery-slot planning and demand forecasting, with per-platform inventory and order reads.</dd></div>
+    <div><dt>Social commerce</dt><dd>WhatsApp order capture, payment-link generation, catalogue build, and per-channel sync.</dd></div>
+    <div><dt>Emerging platforms</dt><dd>A generic adapter exposing inventory, orders and status for additional marketplaces behind one shape.</dd></div>
+  </dl>
+</section>
+
+<section class="area" id="s2">
+  <div class="ahead"><h3>The write path</h3><span class="count">no API keys required</span></div>
+  <p class="lede">The differentiating mechanism. Instead of holding marketplace API credentials, the operator's own browser session drives the seller portal &mdash; behind an approval queue, rate caps and a compliance guard.</p>
+  <dl>
+    <div><dt>Approval queue</dt><dd>Every write is queued with a preview and waits for a human to approve or reject. Nothing reaches a marketplace unreviewed.</dd></div>
+    <div><dt>Browser executor</dt><dd>Playwright drives the live seller portal using the operator's logged-in session. Four action types: stock update, price update, order action, listing toggle.</dd></div>
+    <div><dt>Session vault</dt><dd>Encrypted storage of browser sessions, with open / verify / reconnect / revoke, plus readiness checks before any run.</dd></div>
+    <div><dt>Compliance guard</dt><dd>A deliberate no-stealth, no-CAPTCHA-bypass posture: write caps of 30 per hour per marketplace, 30-second spacing, and pause-on-risk.</dd></div>
+    <div><dt>Account-block safety</dt><dd>Monitors for suspension signals and halts automation before a seller account is put at risk.</dd></div>
+    <div><dt>Human-behaviour engine</dt><dd>Timing and interaction pacing intended to keep portal automation within normal-use patterns.</dd></div>
+  </dl>
+</section>
+
+<section class="area" id="s3">
+  <div class="ahead"><h3>Listings &amp; content</h3><span class="count">11 endpoints</span></div>
+  <dl>
+    <div><dt>Bulk listing</dt><dd>Bulk upload, single and bulk validation before submission, and cross-marketplace sync of one catalogue.</dd></div>
+    <div><dt>Listing tools</dt><dd>A+ content assembly, category assignment, image compliance checks, image resize planning, and variation-family construction.</dd></div>
+    <div><dt>Listing analyzer</dt><dd>Scores a listing and reports what is missing or weak.</dd></div>
+    <div><dt>SEO keyword engine</dt><dd>Keyword generation and placement for titles and bullets.</dd></div>
+  </dl>
+</section>
+
+<section class="area" id="s4">
+  <div class="ahead"><h3>Pricing, demand &amp; competitive intel</h3><span class="count">18 endpoints</span></div>
+  <dl>
+    <div><dt>Repricing advisor</dt><dd>Recommends price moves against a configured margin floor.</dd></div>
+    <div><dt>Dynamic pricing</dt><dd>Rule-driven price adjustment by demand and competitive position.</dd></div>
+    <div><dt>Forecasting</dt><dd>Festival, trend and weather-linked demand prediction, plus predictive inventory.<div class="paths"><code>/api/predict/festival</code><code>/api/predict/trend</code></div></dd></div>
+    <div><dt>Competitor price watch</dt><dd>Tracks rival pricing on the same SKUs over time.</dd></div>
+    <div><dt>Realtime intel</dt><dd>Live competitor, product-price, trending-product, stock, news and exchange-rate feeds.</dd></div>
+    <div><dt>Rank tracking</dt><dd>Records search rank, keeps history, detects drops, and compares against named competitors.</dd></div>
+  </dl>
+</section>
+
+<section class="area" id="s5">
+  <div class="ahead"><h3>Advertising</h3><span class="count">9 endpoints</span></div>
+  <dl>
+    <div><dt>Bid optimisation</dt><dd>Adjusts bids across campaigns against a target.</dd></div>
+    <div><dt>Wasted spend</dt><dd>Identifies spend returning nothing, with an auto-pause action for the worst offenders.</dd></div>
+    <div><dt>Keyword analysis</dt><dd>Evaluates keyword performance and suggests additions and negatives.</dd></div>
+    <div><dt>Campaigns</dt><dd>Campaign creation and budget optimisation across a portfolio.</dd></div>
+  </dl>
+</section>
+
+<section class="area" id="s6">
+  <div class="ahead"><h3>Deals &amp; sale events</h3><span class="count">8 endpoints</span></div>
+  <dl>
+    <div><dt>Deal management</dt><dd>Coupon creation, deal scheduling, performance reporting, and flash-sale stock reservation.</dd></div>
+    <div><dt>Sale-event planning</dt><dd>Plans stock and pricing ahead of a sale event.</dd></div>
+  </dl>
+</section>
+
+<section class="area" id="s7">
+  <div class="ahead"><h3>Returns, NDR &amp; money recovery</h3><span class="count">26 endpoints</span></div>
+  <p class="lede">The area with the most directly measurable rupee value to a seller: money already lost that can be reclaimed.</p>
+  <dl>
+    <div><dt>Returns ledger</dt><dd>Log, resolve, track and export returns; summaries by SKU, ageing buckets, per-SKU return rates, and a suspicious-returns view.</dd></div>
+    <div><dt>Return-fraud detection</dt><dd>Flags buyer and pattern-level return abuse.</dd></div>
+    <div><dt>NDR &amp; RTO</dt><dd>Non-delivery-report actions and return-to-origin risk scoring before dispatch.</dd></div>
+    <div><dt>Weight disputes</dt><dd>Detects courier weight-discrepancy overcharges and assembles the dispute.</dd></div>
+    <div><dt>SAFE-T claims</dt><dd>Prepares Amazon SAFE-T reimbursement claims.</dd></div>
+    <div><dt>Cohort analytics</dt><dd>Return and repeat-purchase cohorts, plus custom reports.</dd></div>
+  </dl>
+</section>
+
+<section class="area" id="s8">
+  <div class="ahead"><h3>Logistics &amp; shipping</h3><span class="count">11 endpoints</span></div>
+  <dl>
+    <div><dt>Carrier integrations</dt><dd>Bluedart, Delhivery, Ecom Express and Xpressbees &mdash; rate quotes, cheapest-carrier comparison, and AWB tracking.</dd></div>
+    <div><dt>Shiprocket</dt><dd>Rate cards, courier comparison, shipment creation and tracking through the aggregator.</dd></div>
+    <div><dt>Manifests &amp; labels</dt><dd>Manifest generation per marketplace, background manifest jobs, multi-manifest PDF merge, and bulk label generation.</dd></div>
+    <div><dt>Shipping monitor</dt><dd>Watches dispatch SLAs and flags what is slipping.</dd></div>
+  </dl>
+</section>
+
+<section class="area" id="s9">
+  <div class="ahead"><h3>Finance, tax &amp; accounting</h3><span class="count">29 endpoints</span></div>
+  <p class="lede">Built for Indian statutory practice rather than generalised accounting. Read the caveat on filing before quoting this section.</p>
+  <dl>
+    <div><dt>GST</dt><dd>Invoice construction with HSN handling, invoice PDF rendering, and GSTR-1 summaries.<div class="paths"><code>/api/gst/invoice</code><code>/api/gst/gstr1</code></div></dd></div>
+    <div><dt>Statutory</dt><dd>GSTR-3B summaries, e-way bill payload assembly (threshold and validity computed from consignment value and distance), TDS reconciliation broken down per marketplace, marketplace commission checks, and Tally export.</dd></div>
+    <div><dt>Accounting</dt><dd>Voucher construction and push into external accounting software.</dd></div>
+    <div><dt>Profitability</dt><dd>SKU-level P&amp;L, per-channel comparison, bulk P&amp;L, a net-profit engine, and expense management.</dd></div>
+    <div><dt>Payout reconciliation</dt><dd>Matches marketplace settlements against expected receipts and surfaces the gap.</dd></div>
+    <div><dt>Cross-border</dt><dd>HS-code lookup, import-duty estimation, VAT calculation, a global tax matrix, currency conversion with a forex engine, international shipping and cross-border P&amp;L.</dd></div>
+  </dl>
+</section>
+
+<section class="area" id="s10">
+  <div class="ahead"><h3>Account health &amp; risk</h3><span class="count">13 endpoints</span></div>
+  <dl>
+    <div><dt>Account health</dt><dd>Health dashboard, suspension-risk scoring, benchmarking, appeal drafting and plan-of-action generation.</dd></div>
+    <div><dt>Risk &amp; compliance</dt><dd>Buyer-risk scoring, fraud-pattern detection, label compliance, licence checks and listing policy scans.</dd></div>
+    <div><dt>Seller recovery</dt><dd>A recovery workflow for accounts already under enforcement.</dd></div>
+    <div><dt>Session health</dt><dd>Detects expired or degraded marketplace sessions before a job fails against them.</dd></div>
+  </dl>
+</section>
+
+<section class="area" id="s11">
+  <div class="ahead"><h3>Reviews &amp; customer communication</h3><span class="count">11 endpoints</span></div>
+  <dl>
+    <div><dt>Review management</dt><dd>Triage by severity, schedule and send review requests, track what is due, and blacklist buyers from solicitation.</dd></div>
+    <div><dt>Sentiment analysis</dt><dd>Classifies review sentiment with Hinglish-aware vocabulary and extracts recurring issue themes.</dd></div>
+    <div><dt>Customer Q&amp;A</dt><dd>Surfaces unanswered marketplace questions and drafts suggested replies.</dd></div>
+    <div><dt>Notifications</dt><dd>Direct buyer notification, and competitor-review monitoring for positioning.</dd></div>
+  </dl>
+</section>
+
+<section class="area" id="s12">
+  <div class="ahead"><h3>B2B &amp; wholesale</h3><span class="count">10 endpoints</span></div>
+  <dl>
+    <div><dt>Pipeline</dt><dd>Lead capture and stage advancement through a wholesale funnel.</dd></div>
+    <div><dt>Quotations &amp; orders</dt><dd>Quotation creation and acceptance, purchase-order creation, and goods-receipt notes.</dd></div>
+    <div><dt>Supply</dt><dd>Business-tier pricing, best-supplier selection and reorder-point checks.</dd></div>
+  </dl>
+</section>
+
+<section class="area" id="s13">
+  <div class="ahead"><h3>Inventory &amp; orders</h3><span class="count">32 endpoints</span></div>
+  <dl>
+    <div><dt>Inventory sync</dt><dd>A sync engine with a queue and an approval step before stock levels are written out.</dd></div>
+    <div><dt>Unified orders</dt><dd>One order feed across connected marketplaces, plus an operator order dashboard.</dd></div>
+    <div><dt>Import</dt><dd>CSV import from file or pasted text, format detection with a fallback parser, import history, and manual single-order entry.</dd></div>
+    <div><dt>Mobile</dt><dd>Barcode registration and scanning from the Android app, and push-notification registration and delivery.</dd></div>
+  </dl>
+</section>
+
+<section class="area" id="s14">
+  <div class="ahead"><h3>AI assistant</h3><span class="count">43 endpoints</span></div>
+  <p class="lede">Hinglish is structural rather than a system prompt &mdash; it appears across 37 backend modules, with a 567-line intent matcher carrying spelling-variance and quantity-word-order rules.</p>
+  <dl>
+    <div><dt>Chat &amp; routing</dt><dd>Natural-language command handling with intent classification, plus a streaming endpoint. Hardware and system questions are answered from real measurements rather than sent to the model.</dd></div>
+    <div><dt>Model layer</dt><dd>Gemini with multi-key rotation and model fallback on quota exhaustion; an Ollama path for offline operation when no cloud key is reachable.</dd></div>
+    <div><dt>Documents &amp; RAG</dt><dd>Upload and index documents, ask questions against them, list and delete the index, with a shared-term relevance gate that suppresses answers from unrelated documents.</dd></div>
+    <div><dt>Memory</dt><dd>Remember and recall facts, export and import the store, with statistics and migration.</dd></div>
+    <div><dt>Autonomous engine</dt><dd>Plan construction, decision-making, a dry-run mode, an approval gate, an audit ledger, a toggleable control loop, anomaly detection and workflow execution.</dd></div>
+    <div><dt>Seller copilot</dt><dd>Seller-domain question answering that stays in commerce context rather than drifting to device questions.</dd></div>
+    <div><dt>Media</dt><dd>Video transcript summarisation with PDF export.</dd></div>
+  </dl>
+</section>
+
+<section class="area" id="s15">
+  <div class="ahead"><h3>Voice &amp; desktop control</h3><span class="count">31 endpoints</span></div>
+  <p class="lede">Origin features from the assistant's Windows-first beginnings. A buyer acquiring the seller platform inherits these and must decide whether to keep or remove them.</p>
+  <dl>
+    <div><dt>Voice</dt><dd>Wake-word start/stop with history, one-shot listening, transcription, speech synthesis, intent extraction and text normalisation.</dd></div>
+    <div><dt>Desktop control</dt><dd>Application launch, screenshot, volume, power actions, temp-file cleaning, disk cleanup, memory optimisation, speed boost and network reset.</dd></div>
+    <div><dt>Google Workspace</dt><dd>Gmail message listing, reading, drafting and summarisation; calendar event listing and creation.</dd></div>
+    <div><dt>Consumer extras</dt><dd>Weather lookup with place search, and a live cricket feed.</dd></div>
+  </dl>
+</section>
+
+<section class="area" id="s16">
+  <div class="ahead"><h3>Security, identity &amp; multi-tenancy</h3><span class="count">51 endpoints</span></div>
+  <dl>
+    <div><dt>Access control</dt><dd>A default-deny gate in middleware &mdash; a route is authenticated unless explicitly allowlisted &mdash; with RBAC roles and per-command permission checks.</dd></div>
+    <div><dt>Identity</dt><dd>Per-device JWTs with individual and bulk revocation, two-factor authentication, OIDC login and callback, and token status.</dd></div>
+    <div><dt>Audit &amp; approval</dt><dd>Append-only audit trail with recent-event reads, an approval workflow for privileged actions, and an emergency stop.</dd></div>
+    <div><dt>Secrets</dt><dd>Encrypted session vault, API-key rotation with cooldown handling, environment protection and a secrets scan.</dd></div>
+    <div><dt>Licensing</dt><dd>Hardware binding, licence status, watermark proof and account recovery.</dd></div>
+    <div><dt>Multi-tenancy</dt><dd>Organisations and workspaces, tenant status, plan assignment, billing checkout and verification, and per-tenant data isolation.</dd></div>
+    <div><dt>Defence</dt><dd>Rate limiting wrapped around the security gate, suspicious-activity monitoring, and firewall and hardening checks.</dd></div>
+  </dl>
+</section>
+
+<section class="area" id="s17">
+  <div class="ahead"><h3>Alerts &amp; notifications</h3><span class="count">16 endpoints</span></div>
+  <dl>
+    <div><dt>Channels</dt><dd>WhatsApp via Twilio and CallMeBot, a Telegram bot, and email &mdash; each testable independently, with a send-to-all path.</dd></div>
+    <div><dt>Honest status</dt><dd>Channel state distinguishes <em>configured</em> from <em>verified</em> from <em>last send failed</em>, because environment presence was never proof a channel worked.</dd></div>
+    <div><dt>Executive summary</dt><dd>A scheduled business digest with preview before dispatch.</dd></div>
+  </dl>
+</section>
+
+<section class="area" id="s18">
+  <div class="ahead"><h3>Platform &amp; operations</h3><span class="count">what a buyer inherits</span></div>
+  <dl>
+    <div><dt>Runtime</dt><dd>FastAPI on Python 3.12, React&nbsp;19 with Vite, PostgreSQL and Redis, packaged with docker-compose and separate production compose and nginx configs.</dd></div>
+    <div><dt>Mobile</dt><dd>An Android APK built through Capacitor in CI.</dd></div>
+    <div><dt>Quality gates in CI</dt><dd>A 70% coverage floor, a 109-module per-module coverage ratchet, an architecture import-direction ratchet, ruff, gitleaks, pip-audit and npm audit &mdash; all failing the build, not advisory. A scheduled soak-and-load job runs separately.</dd></div>
+    <div><dt>Regression corpus</dt><dd>100 tests under <code>tests/regression/</code>, each named for a real defect that was found in use &mdash; inverted review sentiment, device temperature answered as weather, forgeable rate limits, documents crossing tenants.</dd></div>
+    <div><dt>Observability</dt><dd>Health and readiness endpoints, Prometheus metrics, an observability snapshot, analytics and a QA gate.</dd></div>
+    <div><dt>Operations</dt><dd>Backup and restore, cloud push/pull with heartbeat, a distributed job queue with workers and claim/complete/fail semantics, a distributed cache, and a scheduler.</dd></div>
+    <div><dt>Documentation</dt><dd>Sixteen business and legal documents, including NDA, IP assignment, software purchase agreement and source-code transfer agreement, all pre-drafted.</dd></div>
+  </dl>
+</section>
+
+<div class="caveats" id="caveats">
+  <h3>Verified caveats</h3>
+  <p class="lede">Points where the code is narrower than its name implies. Each was opened and read. They are listed here so they surface in this document rather than in a buyer's diligence.</p>
+
+  <div class="cav">
+    <b>Two of four write actions are assist-only.</b>
+    <span><code>order_action</code> and <code>listing_toggle</code> carry empty selector dictionaries and sit in <code>ASSIST_ONLY_ACTIONS</code>. They navigate to the correct page and hand control back to the operator. Only <code>stock_update</code> and <code>price_update</code> attempt automatic execution, and their selectors are pattern-based rather than captured from a live portal. The source states this in its own docstring; the API returns an <code>assistOnly</code> flag.</span>
+  </div>
+
+  <div class="cav">
+    <b>Tax functions build payloads; they do not file.</b>
+    <span>E-way bill assembles a compliant payload and computes validity from distance. GSTR-1 and 3B produce summaries. Nothing submits to the GSTN or NIC portal &mdash; a buyer adding portal submission inherits that work.</span>
+  </div>
+
+  <div class="cav">
+    <b>Pre-revenue, and never run for a paying seller.</b>
+    <span>Zero customers, zero revenue, no production hours. The test suite and the CI gates are real; they are not evidence of load in the hands of real sellers.</span>
+  </div>
+
+  <div class="cav">
+    <b>Browser automation of seller portals carries terms-of-service exposure.</b>
+    <span>The compliance guard and account-block safety module acknowledge and mitigate the risk with write caps and a no-stealth posture. They do not remove it, and portal redesigns break selectors.</span>
+  </div>
+
+  <div class="cav">
+    <b>Desktop, voice and consumer features come with the platform.</b>
+    <span>Roughly 31 endpoints cover PC control, wake-word voice, weather and cricket. A buyer acquiring seller operations inherits them and must maintain or remove them.</span>
+  </div>
+
+  <div class="cav">
+    <b>Some published paths still carry internal version prefixes.</b>
+    <span>Clean domain names are aliased over legacy prefixes, and the deprecated originals remain reachable so existing callers do not break. Both names pass through the same authentication gate.</span>
+  </div>
+</div>
+
+<footer>
+  <span>Prabhudutt Mishra &middot; Yleef Enterprise</span>
+  <span><a href="../">Interactive product tour</a> &nbsp;&middot;&nbsp; Compiled from source, September 2026</span>
+</footer>
+
+</main>
+</div>
+</div>
