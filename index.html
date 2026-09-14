@@ -1,0 +1,270 @@
+<title>JARVIS Product Tour</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  /* Single-theme by intent: this reproduces the product's own dark HUD. */
+  :root{
+    --void:#060b13; --panel:#0c1620; --panel-2:#101d29; --edge:#1c3040;
+    --cyan:#37c8e8; --cyan-dim:#1d7d94; --mint:#41d69b; --amber:#e8b45c;
+    --rose:#e86a7c; --text:#dbe8ef; --dim:#7d95a4; --faint:#4a5f6e;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--void); color:var(--text);
+    font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:15px; line-height:1.55;
+    padding-block:0 60px; padding-left:18px; padding-right:18px;
+  }
+  .wrap{max-width:1080px; margin:0 auto}
+
+  header{padding-block:44px 0}
+  .badge{
+    display:inline-flex; align-items:center; gap:8px; font-family:"IBM Plex Mono",monospace;
+    font-size:11px; letter-spacing:.12em; text-transform:uppercase;
+    color:var(--amber); border:1px solid rgba(229,180,92,.35);
+    background:rgba(229,180,92,.08); padding:5px 11px; border-radius:3px;
+  }
+  h1{
+    font-family:"Chakra Petch",sans-serif; font-weight:700;
+    font-size:clamp(30px,5vw,46px); letter-spacing:.01em; margin:18px 0 10px;
+    text-wrap:balance;
+  }
+  .sub{color:var(--dim); max-width:60ch; margin:0 0 26px; font-size:16px}
+  .sub b{color:var(--cyan); font-weight:600}
+
+  .stats{display:flex; flex-wrap:wrap; gap:8px 30px; margin:0 0 30px; padding:0; list-style:none}
+  .stats div{display:flex; flex-direction:column}
+  .stats b{font-family:"IBM Plex Mono",monospace; font-size:20px; color:var(--cyan); font-variant-numeric:tabular-nums}
+  .stats span{font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--faint); margin-top:2px}
+
+  nav.tabs{display:flex; flex-wrap:wrap; gap:4px; border-bottom:1px solid var(--edge); margin-bottom:0}
+  nav.tabs button{
+    font-family:"Chakra Petch",sans-serif; font-size:13px; font-weight:600;
+    letter-spacing:.04em; text-transform:uppercase;
+    background:none; border:none; border-bottom:2px solid transparent;
+    color:var(--dim); padding:11px 15px; cursor:pointer; margin-bottom:-1px;
+  }
+  nav.tabs button:hover{color:var(--text)}
+  nav.tabs button[aria-selected="true"]{color:var(--cyan); border-bottom-color:var(--cyan)}
+  nav.tabs button:focus-visible{outline:2px solid var(--cyan); outline-offset:-2px}
+
+  .screen{padding-top:26px}
+  .screen[hidden]{display:none}
+  .screen > p.note{color:var(--dim); font-size:14px; margin:0 0 18px; max-width:66ch}
+
+  .hud{background:var(--panel); border:1px solid var(--edge); border-radius:5px; overflow:hidden}
+  .hud-bar{
+    display:flex; align-items:center; gap:9px; padding:9px 14px;
+    background:var(--panel-2); border-bottom:1px solid var(--edge);
+    font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.11em;
+    text-transform:uppercase; color:var(--cyan-dim);
+  }
+  .dot{width:7px; height:7px; border-radius:50%; background:var(--mint); flex:none}
+  .hud-body{padding:18px}
+
+  /* chat */
+  .msg{border:1px solid var(--edge); border-left:2px solid var(--cyan); background:rgba(55,200,232,.04);
+       padding:12px 15px; border-radius:3px; margin-bottom:11px}
+  .msg.user{border-left-color:var(--faint); background:rgba(125,149,164,.05)}
+  .who{font-family:"IBM Plex Mono",monospace; font-size:10px; letter-spacing:.14em;
+       color:var(--cyan-dim); text-transform:uppercase; display:block; margin-bottom:5px}
+  .msg.user .who{color:var(--faint)}
+  .msg p{margin:0 0 9px} .msg p:last-child{margin:0}
+  .ask{display:flex; gap:9px; margin-top:16px; flex-wrap:wrap}
+  .ask button{
+    font-family:"IBM Plex Sans",sans-serif; font-size:13.5px;
+    background:rgba(55,200,232,.07); border:1px solid var(--cyan-dim);
+    color:var(--cyan); padding:8px 13px; border-radius:3px; cursor:pointer; text-align:left;
+  }
+  .ask button:hover{background:rgba(55,200,232,.15)}
+  .ask button:disabled{opacity:.3; cursor:default}
+
+  /* queue */
+  .row{display:grid; grid-template-columns:auto 1fr auto; gap:14px; align-items:center;
+       padding:13px 0; border-bottom:1px solid var(--edge)}
+  .row:last-of-type{border-bottom:none}
+  .id{font-family:"IBM Plex Mono",monospace; color:var(--cyan); font-size:13px}
+  .row .what{font-size:14px} .row .what em{font-style:normal; color:var(--dim); font-size:13px; display:block}
+  .pill{font-family:"IBM Plex Mono",monospace; font-size:10.5px; letter-spacing:.08em;
+        text-transform:uppercase; padding:3px 9px; border-radius:99px; white-space:nowrap}
+  .p-wait{color:var(--amber); border:1px solid rgba(229,180,92,.4); background:rgba(229,180,92,.08)}
+  .p-ok{color:var(--mint); border:1px solid rgba(65,214,155,.4); background:rgba(65,214,155,.08)}
+  .p-no{color:var(--rose); border:1px solid rgba(232,106,124,.4); background:rgba(232,106,124,.08)}
+  .acts{display:flex; gap:7px}
+  .acts button{font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.06em;
+    text-transform:uppercase; background:none; border:1px solid var(--edge); color:var(--dim);
+    padding:5px 11px; border-radius:3px; cursor:pointer}
+  .acts button:hover{border-color:var(--cyan-dim); color:var(--cyan)}
+  .acts button.no:hover{border-color:var(--rose); color:var(--rose)}
+
+  /* table */
+  .scroller{overflow-x:auto}
+  table{width:100%; border-collapse:collapse; font-size:13.5px; min-width:440px}
+  th{font-family:"IBM Plex Mono",monospace; font-size:10px; letter-spacing:.11em;
+     text-transform:uppercase; color:var(--faint); text-align:left; font-weight:400;
+     padding:0 12px 9px 0; border-bottom:1px solid var(--edge)}
+  td{padding:10px 12px 10px 0; border-bottom:1px solid rgba(28,48,64,.6)}
+  td.num{font-family:"IBM Plex Mono",monospace; font-variant-numeric:tabular-nums; text-align:right; padding-right:0}
+  th.num{text-align:right; padding-right:0}
+  tr:last-child td{border-bottom:none}
+  .tot td{border-top:1px solid var(--edge); color:var(--cyan); font-weight:600}
+
+  .grid2{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px; margin-top:16px}
+  .fact{border:1px solid var(--edge); border-radius:4px; padding:14px}
+  .fact b{display:block; font-family:"IBM Plex Mono",monospace; font-size:22px; color:var(--mint);
+          font-variant-numeric:tabular-nums}
+  .fact span{font-size:12.5px; color:var(--dim); display:block; margin-top:3px}
+
+  footer{margin-top:46px; padding-top:20px; border-top:1px solid var(--edge);
+         display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap;
+         font-size:13px; color:var(--faint)}
+  footer a{color:var(--cyan)}
+  @media (prefers-reduced-motion:no-preference){ .msg{animation:in .22s ease-out} }
+  @keyframes in{from{opacity:0; transform:translateY(4px)} to{opacity:1; transform:none}}
+</style>
+
+<div class="wrap">
+<header>
+  <span class="badge">Interactive preview · sample data</span>
+  <h1>JARVIS</h1>
+  <p class="sub">A seller-operations platform for Indian marketplaces, run in <b>Hinglish</b> by voice or text. This page reproduces four real screens with representative data so you can see how it works. It is a walkthrough, not a live instance &mdash; the running system is shown on a screen-share.</p>
+  <ul class="stats">
+    <div><b>602</b><span>API endpoints</span></div>
+    <div><b>4,811</b><span>tests passing</span></div>
+    <div><b>77.9%</b><span>coverage</span></div>
+    <div><b>5</b><span>marketplaces</span></div>
+  </ul>
+</header>
+
+<nav class="tabs" role="tablist">
+  <button role="tab" id="t1" aria-selected="true" aria-controls="s1">Hinglish assistant</button>
+  <button role="tab" id="t2" aria-selected="false" aria-controls="s2">Approval queue</button>
+  <button role="tab" id="t3" aria-selected="false" aria-controls="s3">GST invoice</button>
+  <button role="tab" id="t4" aria-selected="false" aria-controls="s4">Money recovery</button>
+</nav>
+
+<!-- 1 -->
+<section class="screen" id="s1" role="tabpanel" aria-labelledby="t1">
+  <p class="note">The operator types the way they actually speak. Hinglish runs through 37 backend modules and a 567-line intent matcher &mdash; it is not a translation wrapper.</p>
+  <div class="hud">
+    <div class="hud-bar"><span class="dot"></span> AI Interface &mdash; seller session</div>
+    <div class="hud-body">
+      <div id="chat">
+        <div class="msg"><span class="who">Jarvis</span><p>Namaste Boss. Main JARVIS hoon, aapki seva ke liye taiyaar hoon. Aaj main aapki kya madad kar sakta hoon?</p></div>
+      </div>
+      <div class="ask" id="asks">
+        <button data-i="0">Amazon par returns kam kaise karun?</button>
+        <button data-i="1">Is mahine ka GST kitna bana?</button>
+        <button data-i="2">Flipkart pe SKU KB-4402 ka stock 40 kar do</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 -->
+<section class="screen" id="s2" role="tabpanel" aria-labelledby="t2" hidden>
+  <p class="note">Every marketplace write waits for a person. The executor drives the seller's own logged-in portal session, so no marketplace API keys are needed. Try approving or rejecting one.</p>
+  <div class="hud">
+    <div class="hud-bar"><span class="dot"></span> Approval queue &mdash; pending writes</div>
+    <div class="hud-body" id="queue">
+      <div class="row" data-q><span class="id">#100</span>
+        <span class="what">stock_update &middot; amazon<em>SKU KB-4402 &mdash; set quantity to 40</em></span>
+        <span class="acts"><span class="pill p-wait">Pending</span><button data-ok>Approve</button><button class="no" data-no>Reject</button></span></div>
+      <div class="row" data-q><span class="id">#101</span>
+        <span class="what">price_update &middot; flipkart<em>SKU TN-7719 &mdash; &#8377;1,299 &rarr; &#8377;1,185, floor &#8377;1,140</em></span>
+        <span class="acts"><span class="pill p-wait">Pending</span><button data-ok>Approve</button><button class="no" data-no>Reject</button></span></div>
+      <div class="row" data-q><span class="id">#102</span>
+        <span class="what">price_update &middot; meesho<em>SKU KB-4402 &mdash; &#8377;849 &rarr; &#8377;799, below floor &#8377;820</em></span>
+        <span class="acts"><span class="pill p-wait">Pending</span><button data-ok>Approve</button><button class="no" data-no>Reject</button></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 -->
+<section class="screen" id="s3" role="tabpanel" aria-labelledby="t3" hidden>
+  <p class="note">Invoice construction with HSN handling, GSTR-1 and 3B summaries, e-way bill payloads, TDS reconciliation per marketplace and Tally export. The system builds compliant payloads; filing to the GSTN portal stays with the seller's CA.</p>
+  <div class="hud">
+    <div class="hud-bar"><span class="dot"></span> Tax invoice &mdash; INV/2026/0417</div>
+    <div class="hud-body">
+      <div class="scroller"><table>
+        <thead><tr><th>Item</th><th>HSN</th><th class="num">Qty</th><th class="num">Rate</th><th class="num">Taxable</th></tr></thead>
+        <tbody>
+          <tr><td>Wireless keyboard, black</td><td>8471</td><td class="num">12</td><td class="num">1,185.00</td><td class="num">14,220.00</td></tr>
+          <tr><td>USB-C braided cable 1.5m</td><td>8544</td><td class="num">40</td><td class="num">199.00</td><td class="num">7,960.00</td></tr>
+          <tr><td>Laptop sleeve 14&quot;</td><td>4202</td><td class="num">8</td><td class="num">649.00</td><td class="num">5,192.00</td></tr>
+        </tbody>
+      </table></div>
+      <div class="grid2">
+        <div class="fact"><b>&#8377;27,372</b><span>Taxable value</span></div>
+        <div class="fact"><b>&#8377;2,463</b><span>CGST @ 9%</span></div>
+        <div class="fact"><b>&#8377;2,463</b><span>SGST @ 9%</span></div>
+        <div class="fact"><b>&#8377;32,298</b><span>Invoice total</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 -->
+<section class="screen" id="s4" role="tabpanel" aria-labelledby="t4" hidden>
+  <p class="note">Money a seller has already lost and can reclaim. Courier weight overcharges, Amazon SAFE-T reimbursements, failed-delivery actions and return-fraud patterns &mdash; each with the evidence assembled.</p>
+  <div class="hud">
+    <div class="hud-bar"><span class="dot"></span> Recovery &mdash; open claims</div>
+    <div class="hud-body">
+      <div class="scroller"><table>
+        <thead><tr><th>Claim</th><th>Reference</th><th>Detail</th><th class="num">Value</th></tr></thead>
+        <tbody>
+          <tr><td>Weight dispute</td><td>AWB 7742119083</td><td>Charged 2.4&nbsp;kg, shipped 0.9&nbsp;kg</td><td class="num">&#8377;418</td></tr>
+          <tr><td>Weight dispute</td><td>AWB 7742119411</td><td>Charged 1.8&nbsp;kg, shipped 0.6&nbsp;kg</td><td class="num">&#8377;296</td></tr>
+          <tr><td>SAFE-T claim</td><td>ORD 403-7719284</td><td>Returned item not received</td><td class="num">&#8377;1,299</td></tr>
+          <tr><td>RTO risk</td><td>ORD 403-7719840</td><td>Flagged pre-dispatch, address mismatch</td><td class="num">&#8377;849</td></tr>
+          <tr><td>Return fraud</td><td>Buyer 88-2214</td><td>4 returns, 4 SKUs, same month</td><td class="num">&#8377;3,146</td></tr>
+          <tr class="tot"><td colspan="3">Open this month</td><td class="num">&#8377;6,008</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>Prabhudutt Mishra &middot; Yleef Enterprise</span>
+  <span><a href="https://youtu.be/1BjHig91Fn4">90-second recording of the running system &rarr;</a></span>
+</footer>
+</div>
+
+<script>
+(function(){
+  var tabs=[].slice.call(document.querySelectorAll('[role="tab"]'));
+  tabs.forEach(function(t){
+    t.addEventListener('click',function(){
+      tabs.forEach(function(o){
+        o.setAttribute('aria-selected', String(o===t));
+        document.getElementById(o.getAttribute('aria-controls')).hidden = (o!==t);
+      });
+    });
+  });
+
+  var replies=[
+    "Amazon par returns kam karne ke liye ye 3 cheezein sabse zyada asar karti hain:<br><br>1. <b>Size chart</b> &mdash; har product ka alag hota hai. Aapke KB-4402 ke 40% returns &quot;size galat&quot; wale hain, aur listing par chart nahi laga hai.<br>2. <b>Material details</b> &mdash; fabric aur wash-care likhiye. Jo listing sirf photo par chalti hai, uske returns 2x hote hain.<br>3. <b>Recent reviews padhiye</b> &mdash; pichhle 30 din mein 3 buyers ne ek hi complaint likhi hai: cable chhoti hai.",
+    "Is mahine ka GST abhi tak:<br><br>Taxable value &#8377;2,84,610 &middot; CGST &#8377;25,615 &middot; SGST &#8377;25,615 &middot; IGST &#8377;18,204<br><br>Kul output tax <b>&#8377;69,434</b>. GSTR-1 summary taiyaar hai, 41 invoices. Ek invoice mein HSN missing hai &mdash; INV/2026/0392. Wo theek kar dun?",
+    "Theek hai Boss. Flipkart par SKU KB-4402 ka stock 40 karne ka request queue mein daal diya &mdash; <b>#100</b>.<br><br>Main khud nahi likhunga. Aap approval queue mein jaakar preview dekhiye aur approve kijiye, tabhi ye marketplace par jaayega."
+  ];
+  var chat=document.getElementById('chat');
+  document.getElementById('asks').addEventListener('click',function(e){
+    var b=e.target.closest('button'); if(!b||b.disabled) return;
+    var i=+b.getAttribute('data-i'); b.disabled=true;
+    var u=document.createElement('div'); u.className='msg user';
+    u.innerHTML='<span class="who">Operator</span><p>'+b.textContent+'</p>';
+    chat.appendChild(u);
+    var r=document.createElement('div'); r.className='msg';
+    r.innerHTML='<span class="who">Jarvis</span><p>'+replies[i]+'</p>';
+    setTimeout(function(){ chat.appendChild(r); }, 260);
+  });
+
+  document.getElementById('queue').addEventListener('click',function(e){
+    var b=e.target.closest('button'); if(!b) return;
+    var row=b.closest('[data-q]'); var ok=b.hasAttribute('data-ok');
+    var pill=row.querySelector('.pill');
+    pill.className='pill '+(ok?'p-ok':'p-no');
+    pill.textContent= ok ? 'Written' : 'Rejected';
+    row.querySelectorAll('button').forEach(function(x){ x.remove(); });
+  });
+})();
+</script>
