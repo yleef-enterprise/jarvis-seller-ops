@@ -119,6 +119,20 @@
   footer a{color:var(--cyan)}
   @media (prefers-reduced-motion:no-preference){ .msg{animation:in .22s ease-out} }
   @keyframes in{from{opacity:0; transform:translateY(4px)} to{opacity:1; transform:none}}
+
+  .contact{margin-top:42px; border:1px solid var(--edge); border-radius:5px;
+           background:linear-gradient(180deg, var(--panel-2), var(--panel));
+           padding:24px 24px 22px}
+  .contact h2{font-family:"Chakra Petch",sans-serif; font-size:19px; margin:0 0 8px;
+              letter-spacing:.01em; color:var(--text)}
+  .contact p{margin:0 0 18px; color:var(--dim); font-size:14px; max-width:68ch}
+  .contact .lines{display:flex; flex-wrap:wrap; gap:10px 34px; margin:0 0 16px;
+                  font-family:"IBM Plex Mono",monospace; font-size:14.5px}
+  .contact .lines a{color:var(--cyan); text-decoration:none; border-bottom:1px solid var(--cyan-dim)}
+  .contact .lines a:hover{border-bottom-color:var(--cyan)}
+  .contact ul{margin:0; padding-left:18px; color:var(--dim); font-size:13.5px}
+  .contact ul li{margin:3px 0}
+  .contact ul li b{color:var(--text); font-weight:600}
 </style>
 
 <div class="wrap">
@@ -127,9 +141,9 @@
   <h1>JARVIS</h1>
   <p class="sub">A seller-operations platform for Indian marketplaces, run in <b>Hinglish</b> by voice or text. This page reproduces four real screens with representative data so you can see how it works. It is a walkthrough, not a live instance &mdash; the running system is shown on a screen-share.</p>
   <ul class="stats">
-    <div><b>602</b><span>API endpoints</span></div>
-    <div><b>4,811</b><span>tests passing</span></div>
-    <div><b>77.9%</b><span>coverage</span></div>
+    <div><b>619</b><span>route handlers</span></div>
+    <div><b>5,057</b><span>tests passing</span></div>
+    <div><b>78%</b><span>coverage</span></div>
     <div><b>5</b><span>marketplaces</span></div>
   </ul>
 </header>
@@ -221,6 +235,26 @@
       </table></div>
     </div>
   </div>
+</section>
+
+
+<section class="contact">
+  <h2>Talk to the owner</h2>
+  <p>JARVIS is for sale outright &mdash; complete source code and full IP assignment, one
+  author, no contractors, no third-party contributors. It is pre-revenue: built and
+  tested, not yet running for a paying seller. That is stated here because it is the most
+  important fact about it.</p>
+  <div class="lines">
+    <span><a href="mailto:architm640@gmail.com?subject=JARVIS%20%E2%80%94%20source%20and%20IP">architm640@gmail.com</a></span>
+    <span><a href="tel:+919650491654">+91 96504 91654</a></span>
+    <span>Prabhudutt Mishra &middot; Yleef Enterprise</span>
+  </div>
+  <ul>
+    <li><b>NDA, IP assignment and purchase agreement</b> are already drafted &mdash; sent on request.</li>
+    <li><b>Read-only repository access</b> for code review, after the NDA.</li>
+    <li><b>Live screen-share</b> of the running system, fifteen minutes, whenever suits you.</li>
+    <li><b>2&ndash;4 weeks of handover</b> is included in the sale.</li>
+  </ul>
 </section>
 
 <footer>
