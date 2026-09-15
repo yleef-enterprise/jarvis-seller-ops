@@ -136,6 +136,26 @@
   }
   a{color:var(--accent)}
   :focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+
+
+  .contact{
+    margin-top:48px; border:1px solid var(--rule-strong); border-radius:4px;
+    background:var(--accent-soft); padding:26px 26px 24px;
+  }
+  .contact h2{
+    font-family:Spectral,Georgia,serif; font-weight:600; font-size:22px;
+    margin:0 0 8px; color:var(--ink);
+  }
+  .contact p{margin:0 0 18px; color:var(--muted); font-size:14.5px; max-width:70ch}
+  .contact .lines{
+    display:flex; flex-wrap:wrap; gap:10px 32px; margin:0 0 18px;
+    font-family:"JetBrains Mono",ui-monospace,monospace; font-size:14px; color:var(--ink);
+  }
+  .contact .lines a{color:var(--accent); text-decoration:none; border-bottom:1px solid var(--rule-strong)}
+  .contact .lines a:hover{border-bottom-color:var(--accent)}
+  .contact ul{margin:0; padding-left:19px; color:var(--muted); font-size:13.5px}
+  .contact ul li{margin:4px 0}
+  .contact ul li b{color:var(--ink); font-weight:600}
 </style>
 
 <div class="wrap">
@@ -145,17 +165,17 @@
   <h1>JARVIS Capability Schedule</h1>
   <p class="standfirst">Every capability in the platform, compiled by parsing the source rather than reading the marketing. A Hinglish voice-and-chat assistant fused to a seller-operations back office for Indian marketplaces.</p>
   <ul class="facts">
-    <div><b>602</b><span>HTTP endpoints</span></div>
+    <div><b>619</b><span>route handlers</span></div>
     <div><b>44</b><span>router modules</span></div>
-    <div><b>4,811</b><span>backend tests</span></div>
-    <div><b>77.9%</b><span>coverage, 70% floor</span></div>
+    <div><b>5,057</b><span>backend tests</span></div>
+    <div><b>78%</b><span>coverage, 70% floor</span></div>
     <div><b>5</b><span>marketplaces</span></div>
     <div><b>0</b><span>paying customers</span></div>
   </ul>
 </header>
 
 <div class="method">
-  <p><b>How this was compiled.</b> Every route decorator under <code>backend/</code> was parsed for method, path and handler name &mdash; 602 endpoints across 69 files. Counts below are that parse, not an estimate.</p>
+  <p><b>How this was compiled.</b> Every route decorator under <code>backend/</code> was parsed for method, path and handler name. The headline figure &mdash; 619 route handlers across 42 router modules &mdash; is the repository&rsquo;s own generated audit report, which is regenerated and gated in CI, so it cannot drift from the code. Counts below are that parse, not an estimate.</p>
   <p>An endpoint existing is not proof it does useful work. Where a capability was opened and read, it is described in the terms the code actually supports. Everything found to be narrower than its name suggests is listed under <a href="#caveats">Verified caveats</a> rather than quietly dropped.</p>
 </div>
 
@@ -425,6 +445,26 @@
     <span>Clean domain names are aliased over legacy prefixes, and the deprecated originals remain reachable so existing callers do not break. Both names pass through the same authentication gate.</span>
   </div>
 </div>
+
+
+<section class="contact">
+  <h2>Talk to the owner</h2>
+  <p>JARVIS is for sale outright &mdash; complete source code and full IP assignment, one
+  author, no contractors, no third-party contributors. It is pre-revenue: built and
+  tested, not yet running for a paying seller. That is stated here because it is the most
+  important fact about it.</p>
+  <div class="lines">
+    <span><a href="mailto:architm640@gmail.com?subject=JARVIS%20%E2%80%94%20source%20and%20IP">architm640@gmail.com</a></span>
+    <span><a href="tel:+919650491654">+91 96504 91654</a></span>
+    <span>Prabhudutt Mishra &middot; Yleef Enterprise</span>
+  </div>
+  <ul>
+    <li><b>NDA, IP assignment and purchase agreement</b> are already drafted &mdash; sent on request.</li>
+    <li><b>Read-only repository access</b> for code review, after the NDA.</li>
+    <li><b>Live screen-share</b> of the running system, fifteen minutes, whenever suits you.</li>
+    <li><b>2&ndash;4 weeks of handover</b> is included in the sale.</li>
+  </ul>
+</section>
 
 <footer>
   <span>Prabhudutt Mishra &middot; Yleef Enterprise</span>
