@@ -165,17 +165,17 @@
   <h1>JARVIS Capability Schedule</h1>
   <p class="standfirst">Every capability in the platform, compiled by parsing the source rather than reading the marketing. A Hinglish voice-and-chat assistant fused to a seller-operations back office for Indian marketplaces.</p>
   <ul class="facts">
-    <div><b>619</b><span>route handlers</span></div>
+    <div><b>620</b><span>route handlers</span></div>
     <div><b>42</b><span>router modules</span></div>
-    <div><b>5,057</b><span>backend tests</span></div>
-    <div><b>78%</b><span>coverage, 70% floor</span></div>
+    <div><b>5,460</b><span>backend tests</span></div>
+    <div><b>79%</b><span>coverage, 70% floor</span></div>
     <div><b>5</b><span>marketplaces</span></div>
     <div><b>0</b><span>paying customers</span></div>
   </ul>
 </header>
 
 <div class="method">
-  <p><b>How this was compiled.</b> Every route decorator under <code>backend/</code> was parsed for method, path and handler name. The headline figure &mdash; 619 route handlers across 42 router modules &mdash; is the repository&rsquo;s own generated audit report, which is regenerated and gated in CI, so it cannot drift from the code. Counts below are that parse, not an estimate.</p>
+  <p><b>How this was compiled.</b> Every route decorator under <code>backend/</code> was parsed for method, path and handler name. The headline figure &mdash; 620 route handlers across 42 router modules &mdash; is the repository&rsquo;s own generated audit report, which is regenerated and gated in CI, so it cannot drift from the code. Counts below are that parse, not an estimate. Every figure on this page, and the command that reproduces it, is set out at <a href="../proof/">yleef.online/proof/</a>.</p>
   <p>An endpoint existing is not proof it does useful work. Where a capability was opened and read, it is described in the terms the code actually supports. Everything found to be narrower than its name suggests is listed under <a href="#caveats">Verified caveats</a> rather than quietly dropped.</p>
 </div>
 
@@ -468,7 +468,7 @@
 
 <footer>
   <span>Prabhudutt Mishra &middot; Yleef Enterprise</span>
-  <span><a href="../">Interactive product tour</a> &nbsp;&middot;&nbsp; Compiled from source, September 2026</span>
+  <span><a href="../">Interactive product tour</a> &nbsp;&middot;&nbsp; <a href="../proof/">Verify the numbers</a> &nbsp;&middot;&nbsp; Compiled from source, September 2026</span>
 </footer>
 
 </main>
