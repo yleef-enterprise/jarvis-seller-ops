@@ -80,7 +80,7 @@ justify-content:space-between}
 <tr><td>Python lines</td><td class='n'>132,499</td><td class='note'>100,673 excluding blanks and comments, in 695 files</td><td><code class="cmd">python scripts/generate_audit_report.py</code></td></tr>
 <tr><td>JS / JSX / TS lines</td><td class='n'>23,677</td><td class='note'>126 files, 54 React components</td><td><code class="cmd">python scripts/generate_audit_report.py</code></td></tr>
 <tr><td>Backend test files</td><td class='n'>246</td><td class='note'>4,573 test functions, which expand into the run count above</td><td><code class="cmd">python scripts/generate_audit_report.py</code></td></tr>
-<tr><td>Commits</td><td class='n'>416</td><td class='note'>first 2026-06-18, latest 2026-09-18; 645 by a human, 12 by Dependabot</td><td><code class="cmd">git rev-list --count HEAD</code></td></tr>
+<tr><td>Commits</td><td class='n'>416</td><td class='note'>first 2026-06-18, latest 2026-09-18; 407 by a human, 9 by Dependabot</td><td><code class="cmd">git rev-list --count HEAD</code></td></tr>
 </table>
 <p class="note">Two of these deserve a word. The <b>route count is static</b>: it counts decorators across the non-test tree, so it includes handlers on routers that a given deployment may not mount &mdash; treat it as an upper bound on the live surface rather than a promise about it. And <b>the test files hold fewer functions than the run reports</b>, because parametrised tests expand into several cases each. Both differences are visible in the generator, which is in the repository and is the same script that writes the audit.</p>
 <h2>The test run, verbatim</h2>
@@ -532,14 +532,13 @@ TOTAL                                                   33168   6974    79%</pre
 </table>
 </div>
 <h2>Who wrote it</h2>
-<p>416 commits between 2026-06-18 and 2026-09-18. 645 are mine and 12 are Dependabot&rsquo;s. There are no other contributors and there never were: no contractors, no agency, no freelancers, no third-party code drops. That is what makes the IP assignment one signature instead of a chain of them.</p>
+<p>416 commits between 2026-06-18 and 2026-09-18. 407 are mine and 9 are Dependabot&rsquo;s. There are no other contributors and there never were: no contractors, no agency, no freelancers, no third-party code drops. That is what makes the IP assignment one signature instead of a chain of them.</p>
 <table><tr><th>Git identity</th><th>Commits</th></tr>
 <tr><td style='font-size:13.5px'>Archit Mishra &lt;architmishra43@gmail.com&gt;</td><td class='n' style='font-size:14px'>342</td></tr>
-<tr><td style='font-size:13.5px'>Archit Mishra &lt;archit@jarvis.local&gt;</td><td class='n' style='font-size:14px'>179</td></tr>
-<tr><td style='font-size:13.5px'>Prabhudutt Mishra &lt;architmishra43@gmail.com&gt;</td><td class='n' style='font-size:14px'>78</td></tr>
 <tr><td style='font-size:13.5px'>Archit Mishra &lt;69910991+Archit43@users.noreply.github.com&gt;</td><td class='n' style='font-size:14px'>36</td></tr>
-<tr><td style='font-size:13.5px'>dependabot[bot] &lt;49699333+dependabot[bot]@users.noreply.github.com&gt;</td><td class='n' style='font-size:14px'>12</td></tr>
+<tr><td style='font-size:13.5px'>Prabhudutt Mishra &lt;architmishra43@gmail.com&gt;</td><td class='n' style='font-size:14px'>19</td></tr>
 <tr><td style='font-size:13.5px'>Archit mishra &lt;69910991+Archit43@users.noreply.github.com&gt;</td><td class='n' style='font-size:14px'>10</td></tr>
+<tr><td style='font-size:13.5px'>dependabot[bot] &lt;49699333+dependabot[bot]@users.noreply.github.com&gt;</td><td class='n' style='font-size:14px'>9</td></tr>
 </table>
 <p class="note">Several identities, one person &mdash; the same author under different local git configs and a GitHub noreply address, accumulated across machines. The legal name on the assignment and the purchase agreement is <b>Prabhudutt Mishra</b>; anything in the history reading &ldquo;Archit Mishra&rdquo; or &ldquo;Archit43&rdquo; is the same individual. Better said here than found later.</p>
 <h2>What this page does not prove</h2>
