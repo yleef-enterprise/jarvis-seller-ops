@@ -36,7 +36,16 @@ td.note{color:var(--dim);font-size:13.5px}
 td.mono{font-family:"IBM Plex Mono",monospace;font-size:12.5px}
 code.cmd{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--amber);
 background:rgba(232,180,92,.07);border:1px solid rgba(232,180,92,.2);
-padding:2px 6px;border-radius:3px;display:inline-block;white-space:nowrap}
+padding:2px 6px;border-radius:3px;display:inline-block;white-space:pre-wrap;
+overflow-wrap:anywhere}
+@media (max-width:640px){
+ table,tbody,tr,td{display:block}
+ thead{display:none}
+ tr{border-bottom:1px solid var(--edge);padding:8px 0}
+ td{border:none;padding:2px 0}
+ td.n{font-size:20px}
+ .cols table tr{display:flex;justify-content:space-between;align-items:baseline;padding:4px 0}
+}
 pre{background:var(--panel);border:1px solid var(--edge);border-radius:5px;padding:14px 16px;
 overflow-x:auto;font-family:"IBM Plex Mono",monospace;font-size:12px;line-height:1.5;
 color:var(--dim);max-height:440px}
