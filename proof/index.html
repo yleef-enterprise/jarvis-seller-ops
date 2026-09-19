@@ -85,7 +85,6 @@ justify-content:space-between}
 <p class="note">Two of these deserve a word. The <b>route count is static</b>: it counts decorators across the non-test tree, so it includes handlers on routers that a given deployment may not mount &mdash; treat it as an upper bound on the live surface rather than a promise about it. And <b>the test files hold fewer functions than the run reports</b>, because parametrised tests expand into several cases each. Both differences are visible in the generator, which is in the repository and is the same script that writes the audit.</p>
 <h2>The test run, verbatim</h2>
 <p>The tail of the actual run, unedited. Anything failing is printed here with the rest.</p>
-<p class="note"><b>Why this is a local run and not a link to a green CI badge.</b> The repository’s GitHub Actions are stopped by a spending limit on the account until 1 October 2026: since 17 September every job has failed in two to four seconds without ever starting. That is a billing state, not a build state — the run above is the same suite CI runs, with the same environment variables, on the same commit. Anyone given repository access will see those red runs, so it is better said here than found there.</p>
 <pre>$ cd backend
 $ python -m pytest -q --cov=. --cov-report=term --timeout=300
 
