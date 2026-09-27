@@ -167,7 +167,7 @@
   <ul class="facts">
     <div><b>620</b><span>route handlers</span></div>
     <div><b>42</b><span>router modules</span></div>
-    <div><b>5,460</b><span>backend tests</span></div>
+    <div><b>5,705</b><span>backend tests</span></div>
     <div><b>79%</b><span>coverage, 70% floor</span></div>
     <div><b>5</b><span>marketplaces</span></div>
     <div><b>0</b><span>paying customers</span></div>
@@ -354,7 +354,7 @@
 
 <section class="area" id="s14">
   <div class="ahead"><h3>AI assistant</h3><span class="count">43 endpoints</span></div>
-  <p class="lede">Hinglish is structural rather than a system prompt &mdash; it appears across 37 backend modules, with a 567-line intent matcher carrying spelling-variance and quantity-word-order rules.</p>
+  <p class="lede">Hinglish is structural rather than a system prompt &mdash; command words such as <i>karo</i>, <i>batao</i> and <i>dikhao</i> appear in 58 non-test backend modules, and a 567-line intent matcher carries spelling-variance and quantity-word-order rules.</p>
   <dl>
     <div><dt>Chat &amp; routing</dt><dd>Natural-language command handling with intent classification, plus a streaming endpoint. Hardware and system questions are answered from real measurements rather than sent to the model.</dd></div>
     <div><dt>Model layer</dt><dd>Gemini with multi-key rotation and model fallback on quota exhaustion; an Ollama path for offline operation when no cloud key is reachable.</dd></div>
@@ -404,11 +404,11 @@
   <dl>
     <div><dt>Runtime</dt><dd>FastAPI on Python 3.12, React&nbsp;19 with Vite, PostgreSQL and Redis, packaged with docker-compose and separate production compose and nginx configs.</dd></div>
     <div><dt>Mobile</dt><dd>An Android APK built through Capacitor in CI.</dd></div>
-    <div><dt>Quality gates in CI</dt><dd>A 70% coverage floor, a 109-module per-module coverage ratchet, an architecture import-direction ratchet, ruff, gitleaks, pip-audit and npm audit &mdash; all failing the build, not advisory. A scheduled soak-and-load job runs separately.</dd></div>
-    <div><dt>Regression corpus</dt><dd>100 tests under <code>tests/regression/</code>, each named for a real defect that was found in use &mdash; inverted review sentiment, device temperature answered as weather, forgeable rate limits, documents crossing tenants.</dd></div>
+    <div><dt>Quality gates in CI</dt><dd>A 70% coverage floor, a 120-module per-module coverage ratchet, an architecture import-direction ratchet, ruff, gitleaks, pip-audit and npm audit &mdash; all failing the build, not advisory. A scheduled soak-and-load job runs separately.</dd></div>
+    <div><dt>Regression corpus</dt><dd>1,486 tests in 132 files under <code>tests/regression/</code>, most of the files named for a real defect that was found in use &mdash; inverted review sentiment, device temperature answered as weather, forgeable rate limits, documents crossing tenants.</dd></div>
     <div><dt>Observability</dt><dd>Health and readiness endpoints, Prometheus metrics, an observability snapshot, analytics and a QA gate.</dd></div>
     <div><dt>Operations</dt><dd>Backup and restore, cloud push/pull with heartbeat, a distributed job queue with workers and claim/complete/fail semantics, a distributed cache, and a scheduler.</dd></div>
-    <div><dt>Documentation</dt><dd>Sixteen business and legal documents, including NDA, IP assignment, software purchase agreement and source-code transfer agreement, all pre-drafted.</dd></div>
+    <div><dt>Documentation</dt><dd>Eighteen business and legal documents, including NDA, IP assignment, software purchase agreement and source-code transfer agreement, all pre-drafted, with English versions of those four agreements.</dd></div>
   </dl>
 </section>
 
