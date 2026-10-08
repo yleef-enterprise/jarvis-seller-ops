@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://yleef.online/sitemap.xml
