@@ -184,10 +184,10 @@
   <h1>JARVIS Capability Schedule</h1>
   <p class="standfirst">Every capability in the platform, compiled by parsing the source rather than reading the marketing. A Hinglish voice-and-chat assistant fused to a seller-operations back office for Indian marketplaces.</p>
   <ul class="facts">
-    <div><b>620</b><span>route handlers</span></div>
+    <div><b>625</b><span>route handlers</span></div>
     <div><b>42</b><span>router modules</span></div>
-    <div><b>5,705</b><span>backend tests</span></div>
-    <div><b>79%</b><span>coverage, 70% floor</span></div>
+    <div><b>9,255</b><span>backend tests</span></div>
+    <div><b>81%</b><span>coverage, 70% floor</span></div>
     <div><b>5</b><span>marketplaces</span></div>
     <div><b>0</b><span>paying customers</span></div>
   </ul>
@@ -195,7 +195,7 @@
 </header>
 
 <div class="method">
-  <p><b>How this was compiled.</b> Every route decorator under <code>backend/</code> was parsed for method, path and handler name. The headline figure &mdash; 620 route handlers across 42 router modules &mdash; is the repository&rsquo;s own generated audit report, which is regenerated and gated in CI, so it cannot drift from the code. Counts below are that parse, not an estimate. Every figure on this page, and the command that reproduces it, is set out at <a href="../proof/">yleef.online/proof/</a>.</p>
+  <p><b>How this was compiled.</b> Every route decorator under <code>backend/</code> was parsed for method, path and handler name. The headline figure &mdash; 625 route handlers across 42 router modules &mdash; is the repository&rsquo;s own generated audit report, which is regenerated and gated in CI, so it cannot drift from the code. Counts below are that parse, not an estimate. Every figure on this page, and the command that reproduces it, is set out at <a href="../proof/">yleef.online/proof/</a>.</p>
   <p>An endpoint existing is not proof it does useful work. Where a capability was opened and read, it is described in the terms the code actually supports. Everything found to be narrower than its name suggests is listed under <a href="#caveats">Verified caveats</a> rather than quietly dropped.</p>
 </div>
 
@@ -210,7 +210,7 @@
     <li><a href="#s4"><em>04</em> Pricing &amp; demand</a></li>
     <li><a href="#s5"><em>05</em> Advertising</a></li>
     <li><a href="#s6"><em>06</em> Deals &amp; sale events</a></li>
-    <li><a href="#s7"><em>07</em> Returns &amp; recovery</a></li>
+    <li><a href="#s7"><em>07</em> Returns &amp; claims</a></li>
     <li><a href="#s8"><em>08</em> Logistics</a></li>
     <li><a href="#s9"><em>09</em> Finance &amp; tax</a></li>
     <li><a href="#s10"><em>10</em> Account health &amp; risk</a></li>
@@ -251,7 +251,7 @@
     <div><dt>Browser executor</dt><dd>Playwright drives the live seller portal using the operator's logged-in session. Four action types: stock update, price update, order action, listing toggle.</dd></div>
     <div><dt>Session vault</dt><dd>Encrypted storage of browser sessions, with open / verify / reconnect / revoke, plus readiness checks before any run.</dd></div>
     <div><dt>Compliance guard</dt><dd>A deliberate no-stealth, no-CAPTCHA-bypass posture: write caps of 30 per hour per marketplace, 30-second spacing, and pause-on-risk.</dd></div>
-    <div><dt>Account-block safety</dt><dd>Monitors for suspension signals and halts automation before a seller account is put at risk.</dd></div>
+    <div><dt>Account-block safety</dt><dd>Before every write, the executor reads the portal page for account-trouble signals (a suspension notice, &ldquo;unusual activity&rdquo;, a CAPTCHA) and stops, handing the page back to the person. Login, OTP and CAPTCHA automation are refused outright.</dd></div>
     <div><dt>Human-behaviour engine</dt><dd>Timing and interaction pacing intended to keep portal automation within normal-use patterns.</dd></div>
   </dl>
 </section>
@@ -282,7 +282,7 @@
   <div class="ahead"><h3>Advertising</h3><span class="count">9 endpoints</span></div>
   <dl>
     <div><dt>Bid optimisation</dt><dd>Adjusts bids across campaigns against a target.</dd></div>
-    <div><dt>Wasted spend</dt><dd>Identifies spend returning nothing, with an auto-pause action for the worst offenders.</dd></div>
+    <div><dt>Wasted spend</dt><dd>Identifies spend returning nothing and lists the worst keywords to pause.</dd></div>
     <div><dt>Keyword analysis</dt><dd>Evaluates keyword performance and suggests additions and negatives.</dd></div>
     <div><dt>Campaigns</dt><dd>Campaign creation and budget optimisation across a portfolio.</dd></div>
   </dl>
@@ -297,8 +297,8 @@
 </section>
 
 <section class="area" id="s7">
-  <div class="ahead"><h3>Returns, NDR &amp; money recovery</h3><span class="count">26 endpoints</span></div>
-  <p class="lede">The area with the most directly measurable rupee value to a seller: money already lost that can be reclaimed.</p>
+  <div class="ahead"><h3>Returns, NDR &amp; claims</h3><span class="count">26 endpoints</span></div>
+  <p class="lede">Tools for the money a seller may be owed on individual orders. They work from the figures the seller enters and draft the claim; they do not read settlement reports in bulk or file anything on the seller&rsquo;s behalf.</p>
   <dl>
     <div><dt>Returns ledger</dt><dd>Log, resolve, track and export returns; summaries by SKU, ageing buckets, per-SKU return rates, and a suspicious-returns view.</dd></div>
     <div><dt>Return-fraud detection</dt><dd>Flags buyer and pattern-level return abuse.</dd></div>
@@ -327,7 +327,7 @@
     <div><dt>Statutory</dt><dd>GSTR-3B summaries, e-way bill payload assembly (threshold and validity computed from consignment value and distance), TDS reconciliation broken down per marketplace, marketplace commission checks, and Tally export.</dd></div>
     <div><dt>Accounting</dt><dd>Voucher construction and push into external accounting software.</dd></div>
     <div><dt>Profitability</dt><dd>SKU-level P&amp;L, per-channel comparison, bulk P&amp;L, a net-profit engine, and expense management.</dd></div>
-    <div><dt>Payout reconciliation</dt><dd>Matches marketplace settlements against expected receipts and surfaces the gap.</dd></div>
+    <div><dt>Payout check</dt><dd>Compares the expected payout for an order with what was paid.</dd></div>
     <div><dt>Cross-border</dt><dd>HS-code lookup, import-duty estimation, VAT calculation, a global tax matrix, currency conversion with a forex engine, international shipping and cross-border P&amp;L.</dd></div>
   </dl>
 </section>
@@ -343,12 +343,13 @@
 </section>
 
 <section class="area" id="s11">
-  <div class="ahead"><h3>Reviews &amp; customer communication</h3><span class="count">11 endpoints</span></div>
+  <div class="ahead"><h3>Reviews &amp; customer communication</h3><span class="count">14 endpoints</span></div>
   <dl>
     <div><dt>Review management</dt><dd>Triage by severity, schedule and send review requests, track what is due, and blacklist buyers from solicitation.</dd></div>
     <div><dt>Sentiment analysis</dt><dd>Classifies review sentiment with Hinglish-aware vocabulary and extracts recurring issue themes.</dd></div>
     <div><dt>Customer Q&amp;A</dt><dd>Surfaces unanswered marketplace questions and drafts suggested replies.</dd></div>
     <div><dt>Notifications</dt><dd>Direct buyer notification, and competitor-review monitoring for positioning.</dd></div>
+    <div><dt>Review inbox</dt><dd>Reviews the seller pastes in or imports from CSV, kept pending until handled. It does not fetch reviews from the marketplaces.</dd></div>
   </dl>
 </section>
 
@@ -362,18 +363,19 @@
 </section>
 
 <section class="area" id="s13">
-  <div class="ahead"><h3>Inventory &amp; orders</h3><span class="count">32 endpoints</span></div>
+  <div class="ahead"><h3>Inventory &amp; orders</h3><span class="count">34 endpoints</span></div>
   <dl>
     <div><dt>Inventory sync</dt><dd>A sync engine with a queue and an approval step before stock levels are written out.</dd></div>
     <div><dt>Unified orders</dt><dd>One order feed across connected marketplaces, plus an operator order dashboard.</dd></div>
     <div><dt>Import</dt><dd>CSV import from file or pasted text, format detection with a fallback parser, import history, and manual single-order entry.</dd></div>
     <div><dt>Mobile</dt><dd>Barcode registration and scanning from the Android app, and push-notification registration and delivery.</dd></div>
+    <div><dt>Catalog</dt><dd>Price and cost per SKU, entered or imported by the seller, which the margin and below-floor price checks read.</dd></div>
   </dl>
 </section>
 
 <section class="area" id="s14">
   <div class="ahead"><h3>AI assistant</h3><span class="count">43 endpoints</span></div>
-  <p class="lede">Hinglish is structural rather than a system prompt &mdash; command words such as <i>karo</i>, <i>batao</i> and <i>dikhao</i> appear in 58 non-test backend modules, and a 567-line intent matcher carries spelling-variance and quantity-word-order rules.</p>
+  <p class="lede">Hinglish is structural rather than a system prompt &mdash; command words such as <i>karo</i>, <i>batao</i> and <i>dikhao</i> appear in 64 non-test backend modules, and a 613-line intent matcher carries spelling-variance and quantity-word-order rules.</p>
   <dl>
     <div><dt>Chat &amp; routing</dt><dd>Natural-language command handling with intent classification, plus a streaming endpoint. Hardware and system questions are answered from real measurements rather than sent to the model.</dd></div>
     <div><dt>Model layer</dt><dd>Gemini with multi-key rotation and model fallback on quota exhaustion; an Ollama path for offline operation when no cloud key is reachable.</dd></div>
@@ -424,7 +426,7 @@
     <div><dt>Runtime</dt><dd>FastAPI on Python 3.12, React&nbsp;19 with Vite, PostgreSQL and Redis, packaged with docker-compose and separate production compose and nginx configs.</dd></div>
     <div><dt>Mobile</dt><dd>An Android APK built through Capacitor in CI.</dd></div>
     <div><dt>Quality gates in CI</dt><dd>A 70% coverage floor, a 120-module per-module coverage ratchet, an architecture import-direction ratchet, ruff, gitleaks, pip-audit and npm audit &mdash; all failing the build, not advisory. A scheduled soak-and-load job runs separately.</dd></div>
-    <div><dt>Regression corpus</dt><dd>1,486 tests in 132 files under <code>tests/regression/</code>, most of the files named for a real defect that was found in use &mdash; inverted review sentiment, device temperature answered as weather, forgeable rate limits, documents crossing tenants.</dd></div>
+    <div><dt>Regression corpus</dt><dd>2,049 tests in 200 files under <code>tests/regression/</code>, most of the files named for a real defect that was found in use &mdash; inverted review sentiment, device temperature answered as weather, forgeable rate limits, documents crossing tenants.</dd></div>
     <div><dt>Observability</dt><dd>Health and readiness endpoints, Prometheus metrics, an observability snapshot, analytics and a QA gate.</dd></div>
     <div><dt>Operations</dt><dd>Backup and restore, cloud push/pull with heartbeat, a distributed job queue with workers and claim/complete/fail semantics, a distributed cache, and a scheduler.</dd></div>
     <div><dt>Documentation</dt><dd>Eighteen business and legal documents, including NDA, IP assignment, software purchase agreement and source-code transfer agreement, all pre-drafted, with English versions of those four agreements.</dd></div>
@@ -482,7 +484,7 @@
     <li><b>NDA, IP assignment and purchase agreement</b> are already drafted &mdash; sent on request.</li>
     <li><b>Code review on a screen-share</b> after the NDA &mdash; you choose the files and the commands. The code and its full history are delivered at closing.</li>
     <li><b>Live screen-share</b> of the running system, fifteen minutes, whenever suits you.</li>
-    <li><b>2&ndash;4 weeks of handover</b> is included in the sale.</li>
+    <li><b>Thirty days of handover</b> is included in the sale.</li>
   </ul>
 </section>
 

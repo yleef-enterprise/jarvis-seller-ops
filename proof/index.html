@@ -81,22 +81,22 @@ color:var(--faint);font-size:12.5px;display:flex;flex-wrap:wrap;gap:10px 22px;
 justify-content:space-between}
 </style>
 <div class="wrap"><header>
-<span class="badge">Measured 2026-09-26 &middot; commit 1d58198</span>
+<span class="badge">Measured 2026-10-31 &middot; commit 1fa90e2</span>
 <h1>Don&rsquo;t take my word for any of it</h1>
-<p class="sub">Every number quoted for this platform is below, next to <b>what produced it</b> and <b>the command that reproduces it</b>. The measurements were taken on the development machine on 2026-09-26, and this page is generated from their raw output rather than typed by hand. After an NDA any of these commands is run live on a screen-share, against the repository, while you choose and watch; at closing you receive the repository with its full history and can run them yourself.</p>
+<p class="sub">Every number quoted for this platform is below, next to <b>what produced it</b> and <b>the command that reproduces it</b>. The measurements were taken on the development machine on 2026-10-31, and this page is generated from their raw output rather than typed by hand. After an NDA any of these commands is run live on a screen-share, against the repository, while you choose and watch; at closing you receive the repository with its full history and can run them yourself.</p>
 </header>
 <h2>The numbers, and where each one comes from</h2>
 <table><tr><th>Measure</th><th>Value</th><th>What it means</th><th>Reproduce with</th></tr>
-<tr><td>Route handlers</td><td class='n'>620</td><td class='note'>42 router modules; 323 POST, 290 GET, 6 DELETE, 1 WEBSOCKET</td><td><code class="cmd">python scripts/generate_audit_report.py</code></td></tr>
-<tr><td>Backend tests run</td><td class='n'>5,705</td><td class='note'>passed on this machine plus 996 subtests, 0 failed, 0 skipped, in 18 minutes</td><td><code class="cmd">python -m pytest -q --cov=. --cov-report=term</code></td></tr>
-<tr><td>Backend line coverage</td><td class='n'>79%</td><td class='note'>33510 statements, 7017 uncovered. CI fails the build below 70%</td><td><code class="cmd">python -m pytest -q --cov=. --cov-fail-under=70</code></td></tr>
-<tr><td>Python lines</td><td class='n'>138,361</td><td class='note'>104,748 excluding blanks and comments, in 716 files</td><td><code class="cmd">python scripts/generate_audit_report.py</code></td></tr>
-<tr><td>JS / JSX / TS lines</td><td class='n'>23,678</td><td class='note'>126 files, 54 React components</td><td><code class="cmd">python scripts/generate_audit_report.py</code></td></tr>
-<tr><td>Backend test files</td><td class='n'>264</td><td class='note'>4,767 test functions, which expand into the run count above</td><td><code class="cmd">python scripts/generate_audit_report.py</code></td></tr>
-<tr><td>Commits</td><td class='n'>452</td><td class='note'>first 2026-06-18, latest 2026-09-26; 443 by a human, 9 by Dependabot</td><td><code class="cmd">git rev-list --count HEAD</code></td></tr>
-<tr><td>Hinglish in the backend</td><td class='n'>58</td><td class='note'>non-test backend modules containing the command words karo, batao or dikhao. Counting the English word &quot;Hinglish&quot; instead gives 26</td><td><code class="cmd">git grep -lwE &quot;karo|batao|dikhao&quot; -- &quot;backend/*.py&quot; &quot;:!backend/tests&quot; | wc -l</code></td></tr>
-<tr><td>Intent matcher</td><td class='n'>567</td><td class='note'>lines in backend/services/intent_matcher.py</td><td><code class="cmd">wc -l backend/services/intent_matcher.py</code></td></tr>
-<tr><td>Regression tests</td><td class='n'>1,486</td><td class='note'>test functions in 132 files under backend/tests/regression/, most named for a defect found in use</td><td><code class="cmd">grep -hE &quot;^\s*(async )?def test_&quot; backend/tests/regression/*.py | wc -l</code></td></tr>
+<tr><td>Route handlers</td><td class='n'>625</td><td class='note'>42 router modules; 326 POST, 292 GET, 6 DELETE, 1 WEBSOCKET</td><td><code class="cmd">python scripts/generate_audit_report.py</code></td></tr>
+<tr><td>Backend tests run</td><td class='n'>9,255</td><td class='note'>passed on this machine plus 996 subtests, 0 failed, 0 skipped, in 32 minutes</td><td><code class="cmd">python -m pytest -q --cov=. --cov-report=term</code></td></tr>
+<tr><td>Backend line coverage</td><td class='n'>81%</td><td class='note'>35474 statements, 6686 uncovered. CI fails the build below 70%</td><td><code class="cmd">python -m pytest -q --cov=. --cov-fail-under=70</code></td></tr>
+<tr><td>Python lines</td><td class='n'>157,174</td><td class='note'>118,277 excluding blanks and comments, in 797 files</td><td><code class="cmd">python scripts/generate_audit_report.py</code></td></tr>
+<tr><td>JS / JSX / TS lines</td><td class='n'>23,848</td><td class='note'>126 files, 54 React components</td><td><code class="cmd">python scripts/generate_audit_report.py</code></td></tr>
+<tr><td>Backend test files</td><td class='n'>336</td><td class='note'>5,369 test functions, which expand into the run count above</td><td><code class="cmd">python scripts/generate_audit_report.py</code></td></tr>
+<tr><td>Commits</td><td class='n'>499</td><td class='note'>first 2026-06-18, latest 2026-10-30; 472 by a human, 27 by Dependabot</td><td><code class="cmd">git rev-list --count HEAD</code></td></tr>
+<tr><td>Hinglish in the backend</td><td class='n'>64</td><td class='note'>non-test backend modules containing the command words karo, batao or dikhao. Counting the English word &quot;Hinglish&quot; instead gives 28</td><td><code class="cmd">git grep -lwE &quot;karo|batao|dikhao&quot; -- &quot;backend/*.py&quot; &quot;:!backend/tests&quot; | wc -l</code></td></tr>
+<tr><td>Intent matcher</td><td class='n'>613</td><td class='note'>lines in backend/services/intent_matcher.py</td><td><code class="cmd">wc -l backend/services/intent_matcher.py</code></td></tr>
+<tr><td>Regression tests</td><td class='n'>2,049</td><td class='note'>test functions in 200 files under backend/tests/regression/, most named for a defect found in use</td><td><code class="cmd">grep -hE &quot;^\s*(async )?def test_&quot; backend/tests/regression/*.py | wc -l</code></td></tr>
 <tr><td>Coverage ratchet</td><td class='n'>120</td><td class='note'>modules with a per-module coverage floor that CI will not let fall</td><td><code class="cmd">python -c &quot;import json;print(len(json.load(open(&#x27;backend/coverage_baseline.json&#x27;))[&#x27;modules&#x27;]))&quot;</code></td></tr>
 <tr><td>Business and legal documents</td><td class='n'>18</td><td class='note'>numbered 00 onwards in business-docs/, the four agreements also in English</td><td><code class="cmd">ls business-docs</code></td></tr>
 </table>
@@ -107,24 +107,24 @@ justify-content:space-between}
 $ python -m pytest -q -p tests.netguard --cov=. --cov-report=term --cov-fail-under=70 --timeout=300
 
 45 empty files skipped.
-Required test coverage of 70% reached. Total coverage: 79.06%
+Required test coverage of 70% reached. Total coverage: 81.15%
 
 outbound network attempts by test
   none - the suite stayed offline
-===== 5705 passed, 4 warnings, 996 subtests passed in 1084.99s (0:18:04) ======</pre>
+===== 9255 passed, 4 warnings, 996 subtests passed in 1944.03s (0:32:24) ======</pre>
 <details><summary>Coverage, module by module &mdash; the whole table</summary><pre>Name                                                    Stmts   Miss  Cover   Missing
 -------------------------------------------------------------------------------------
 agents\acp_aod_engine.py                                  182     13    93%   56-57, 224-228, 253, 264-265, 267, 315-316
 agents\anomaly_detection.py                                64      2    97%   47-48
 agents\approval_queue.py                                   12      2    83%   28, 31
-agents\decision_executor.py                               232    113    51%   66-68, 96-98, 144-146, 167-169, 173-179, 196-213, 218-245, 250-295, 299-326, 396-397
+agents\decision_executor.py                               236    114    52%   66-68, 96-98, 144-146, 173, 182-184, 188-194, 211-228, 233-260, 265-310, 314-341, 411-412
 agents\inventory_recommendation_ai.py                      14      0   100%
 agents\multi_agent.py                                     112     60    46%   100-127, 140-184, 196-218, 233, 235
 agents\operations_copilot.py                               13      1    92%   16
 agents\risk_scoring.py                                     16      3    81%   11, 14-15
 agents\smart_routing.py                                     8      0   100%
 agents\workflow_engine.py                                   8      0   100%
-ai\intent_engine.py                                        52      2    96%   19, 29
+ai\intent_engine.py                                        54      2    96%   19, 29
 alerts_automation\background_workers.py                     3      0   100%
 alerts_automation\daily_ai_summary.py                       5      0   100%
 alerts_automation\email_alerts.py                         133     50    62%   53, 57, 103, 123-131, 155-157, 176-236, 283-284
@@ -134,12 +134,12 @@ alerts_automation\sleep_mode.py                             5      3    40%   3-
 alerts_automation\telegram_alerts.py                       20      3    85%   37-39
 alerts_automation\whatsapp_alerts.py                       20      9    55%   20-22, 25-30
 app.py                                                      6      0   100%
-app_modular.py                                            841    480    43%   18-19, 38-50, 62, 67-71, 76-103, 112-114, 122-159, 167-195, 200-214, 219-225, 230-241, 246-250, 261-308, 318-371, 381-398, 403-407, 412-622, 627-633, 638-643, 648-657, 673-755, 782-787, 796, 879-881, 890-891, 1068, 1105, 1217, 1229-1230, 1253-1254, 1320-1325, 1330-1331, 1350-1354, 1371-1372, 1401-1402, 1413-1414, 1443-1445, 1451-1453, 1461-1463, 1469-1471, 1477-1479, 1486-1488, 1497-1499, 1506-1508, 1516-1518, 1565-1566, 1580-1581, 1648-1649, 1714-1715, 1781-1782, 1790-1792, 1815-1870, 1872, 1876-1881, 1883-1884, 1908, 1942-1945, 1954-1956, 2021-2022
+app_modular.py                                            846    449    47%   18-19, 38-50, 62, 67-71, 76-103, 112-114, 122-166, 174-202, 207-221, 226-232, 237-248, 253-257, 270-285, 316-317, 352-353, 367-420, 430-447, 452-456, 461-665, 670-676, 681-686, 691-700, 716-798, 825-830, 839, 922-924, 933-934, 1111, 1148, 1260, 1272-1273, 1296-1297, 1363-1368, 1373-1374, 1393-1397, 1414-1415, 1444-1445, 1456-1457, 1486-1488, 1494-1496, 1504-1506, 1512-1514, 1520-1522, 1529-1531, 1540-1542, 1549-1551, 1559-1561, 1608-1609, 1623-1624, 1691-1692, 1757-1758, 1824-1825, 1833-1835, 1858-1913, 1915, 1919-1924, 1926-1927, 1951, 1985-1988, 1997-1999, 2064-2065
 cloud\analytics_cloud.py                                   11      0   100%
-cloud\cloud_backup.py                                      49      0   100%
-cloud\cloud_sync.py                                        44      0   100%
+cloud\cloud_backup.py                                      51      0   100%
+cloud\cloud_sync.py                                        47      0   100%
 cloud\mobile_companion.py                                   8      1    88%   40
-cloud\multi_tenant.py                                     174      8    95%   121, 188-189, 269, 277, 360, 377-378
+cloud\multi_tenant.py                                     177      8    95%   128, 195-196, 276, 284, 367, 384-385
 cloud\payment_gateway.py                                   89      0   100%
 cloud\remote_access_guard.py                                7      0   100%
 cloud\remote_monitoring.py                                 25      4    84%   24-25, 37-38
@@ -151,7 +151,8 @@ core\ai_engine.py                                          53     15    72%   39
 core\alert_engine.py                                       29     12    59%   19-20, 24, 28, 32, 36, 40-42, 47, 50, 53
 core\app_registry.py                                       24      1    96%   99
 core\approval_endpoints.py                                  2      0   100%
-core\atomic_store.py                                       62      2    97%   116-117
+core\atomic_store.py                                      120     10    92%   117-118, 218-219, 238-241, 245-246
+core\data_relocation.py                                   132     20    85%   90, 93-94, 106-107, 139-140, 189-190, 210-213, 234-240, 250-251
 core\device_trust.py                                       94     44    53%   39-40, 54, 70-87, 105-127
 core\endpoint_errors.py                                    31      1    97%   63
 core\external_calls.py                                      8      1    88%   50
@@ -169,17 +170,17 @@ core\route_manifest.py                                      8      0   100%
 core\security_middleware.py                               101     21    79%   13-14, 50-58, 79-82, 151-152, 157, 164-166
 core\seller_engine.py                                      50     14    72%   23-25, 33-35, 51-53, 72-73, 86-88
 core\system_engine.py                                     128     35    73%   30-46, 79-82, 107-109, 166-168, 175-179, 218-220
-core\utils.py                                              50      1    98%   40
+core\utils.py                                              73      4    95%   42, 80-82
 core\wifi_guardian.py                                       9      0   100%
 database\__init__.py                                        2      0   100%
-database\base.py                                           57     15    74%   32, 70-97, 133-135, 139
-database\migrations\env.py                                 28     28     0%   1-46
+database\base.py                                           62      5    92%   116, 152-154, 158
+database\migrations\env.py                                 29     29     0%   1-48
 database\migrations\versions\001_initial_schema.py         19     19     0%   9-77
 database\migrations\versions\002_postgresql_compat.py      44     44     0%   13-128
 database\models.py                                         64      8    88%   81-89
-database\sql_store.py                                      60      1    98%   148
+database\sql_store.py                                      61      1    98%   150
 desktop\desktop_automation.py                              41     31    24%   27-40, 44-49, 53-60, 64-69
-desktop\system_control.py                                  47      9    81%   18, 26-27, 34-36, 73-75
+desktop\system_control.py                                  47      7    85%   18, 34-36, 73-75
 desktop\voice_command_router.py                            18      1    94%   12
 enterprise\desktop_control.py                             104     34    67%   129-130, 136-138, 144-146, 152-154, 161-163, 165-167, 178-179, 183-185, 208, 212-222, 235-236, 238-239
 enterprise\performance_governor.py                         17      2    88%   16-17
@@ -190,22 +191,23 @@ finance\accounting_connectors.py                          145     14    90%   15
 finance\accounting_router.py                               32     12    62%   23, 30-31, 36-39, 44-48
 finance\currency_converter.py                              39      0   100%
 finance\expense_manager.py                                  8      0   100%
-finance\forex_engine.py                                    48     10    79%   42-47, 51-52, 70, 73
-finance\global_tax_matrix.py                               33      0   100%
-finance\gst_invoice.py                                    180     17    91%   49, 56, 115-116, 122, 213, 215, 242, 255-263
+finance\forex_engine.py                                    49     10    80%   43-48, 52-53, 71, 74
+finance\global_tax_matrix.py                               42      0   100%
+finance\gst_invoice.py                                    198     17    91%   67, 74, 175-176, 184, 280, 282, 309, 323-331
 finance\gst_invoice_router.py                              46     20    57%   36-37, 43-46, 52-64, 70-74
 finance\gst_tax_assistant.py                               15      0   100%
 finance\international.py                                   78      3    96%   139-140, 154
 finance\international_router.py                            51     24    53%   39-42, 47-50, 55-58, 63-66, 71-74, 79-82
+finance\marketplace_fees.py                                41      0   100%
 finance\ndr_rto_tracker.py                                 21      0   100%
-finance\net_profit_engine.py                               65      1    98%   47
+finance\net_profit_engine.py                               95      1    99%   94
 finance\payout_reconciliation.py                            6      0   100%
 finance\return_fraud_tracker.py                            12      0   100%
 finance\returns_and_cohorts.py                             96      3    97%   66, 74-75
 finance\returns_and_cohorts_router.py                      35     12    66%   34-37, 42-45, 50-53
 finance\sku_pnl.py                                         48      3    94%   58, 76, 95
 finance\sku_pnl_router.py                                  41     18    56%   27-28, 33-36, 41-44, 49-52, 57-60
-finance\statutory_filings.py                               61      2    97%   130, 167
+finance\statutory_filings.py                               49      2    96%   115, 152
 finance\statutory_filings_router.py                        47     20    57%   40-43, 48-51, 56-59, 64-67, 72-75
 finance\vat_calculator.py                                  20      0   100%
 finance\weight_discrepancy.py                               9      0   100%
@@ -235,7 +237,7 @@ jarvis_app\voice\tts\speaker.py                           221     75    66%   86
 jarvis_app\voice\wakeword\detector.py                     141     91    35%   75, 88, 95-108, 112-162, 167-179, 183-223
 jarvis_app\voice\wakeword\wake_daemon.py                  140     54    61%   106-107, 113-151, 162-163, 172-198
 jarvis_core\__init__.py                                    56     15    73%   56, 72, 81-82, 84-85, 87-88, 90-91, 93-97, 133
-jarvis_core\_legacy_impl.py                               852    211    75%   25-51, 60-61, 89-90, 120-122, 136-152, 174-175, 182-183, 188-189, 198-199, 218-219, 223-234, 249-250, 257-258, 273-274, 281-282, 295-300, 406-412, 436-437, 473-487, 492, 497-500, 525, 531-532, 576-577, 630-632, 637-665, 764-765, 829-830, 838-839, 847-853, 898-899, 942-945, 949-950, 1005-1010, 1054-1058, 1115-1136, 1159-1160, 1219, 1248-1250, 1346-1347, 1375-1376, 1460, 1462, 1519-1521, 1600-1601, 1612-1613, 1624-1636, 1643, 1682, 1717-1718, 1757-1758, 1767-1768
+jarvis_core\_legacy_impl.py                               887    219    75%   25-51, 60-61, 89-90, 120-122, 136-152, 174-175, 182-183, 188-189, 198-199, 218-219, 223-234, 249-250, 257-258, 273-274, 281-282, 295-300, 406-412, 436-437, 473-487, 492, 497-500, 525, 531-532, 576-577, 630-632, 637-665, 764-765, 829-830, 838-839, 847-853, 913-914, 957-960, 964-965, 1020-1025, 1069-1073, 1130-1151, 1174-1175, 1234, 1263-1265, 1285-1286, 1373-1374, 1412, 1420, 1423, 1427-1429, 1440-1441, 1535, 1537, 1594-1596, 1675-1676, 1687-1688, 1699-1711, 1718, 1757, 1792-1793, 1832-1833, 1842-1843
 jarvis_core\lazy_loader.py                                 23      0   100%
 jarvis_core\plugin_loader.py                               23      0   100%
 jarvis_core\queue_isolation.py                             36      3    92%   44, 47-48
@@ -243,22 +245,22 @@ jarvis_core\service_registry.py                            56      0   100%
 jarvis_core\time_engine.py                                 39      8    79%   48-62
 long_term_memory\embedding_engine.py                       41      6    85%   27-28, 51-52, 67, 69
 long_term_memory\memory_categories.py                       1      0   100%
-long_term_memory\memory_engine.py                          43      8    81%   42-43, 56-58, 70, 74-75
+long_term_memory\memory_engine.py                          43      9    79%   42-44, 56-58, 70, 74-75
 long_term_memory\memory_router.py                          14      0   100%
-long_term_memory\semantic_recall.py                        22      2    91%   30-31
-long_term_memory\vector_store.py                           95      5    95%   36-37, 72, 77, 87
+long_term_memory\semantic_recall.py                        15      0   100%
+long_term_memory\vector_store.py                           99      5    95%   43-44, 85, 90, 100
 main.py                                                     2      2     0%   12-14
-marketplaces\account_block_safety.py                      229     12    95%   351-352, 452-455, 459-461, 510-512
-marketplaces\action_executor.py                           349     40    89%   202-203, 237-238, 331-332, 361-363, 384-385, 444, 454-455, 464, 476, 515-516, 528-529, 552-553, 557-558, 577, 585-586, 610, 650-651, 661-662, 677-678, 698-704
+marketplaces\account_block_safety.py                      234     12    95%   362-363, 463-466, 470-472, 521-523
+marketplaces\action_executor.py                           357     40    89%   202-203, 237-238, 331-332, 374-376, 397-398, 457, 467-468, 477, 496, 536-537, 561-562, 585-586, 590-591, 610, 618-619, 643, 683-684, 694-695, 713-714, 734-740
 marketplaces\adapter_common.py                             29      1    97%   33
 marketplaces\amazon_sync.py                                64      0   100%
-marketplaces\api_write_guard.py                            25      0   100%
+marketplaces\api_write_guard.py                            26      0   100%
 marketplaces\base_adapter.py                               16      0   100%
 marketplaces\browser_session.py                           256     70    73%   82-90, 137-138, 175-179, 206-207, 247-260, 279-299, 313, 317-318, 324-325, 335-339, 355-358, 401-402, 433-448, 456-458, 511, 536
 marketplaces\bulk_listing_manager.py                       82     12    85%   100, 146, 188-189, 201, 219, 222-224, 227-229
 marketplaces\bulk_listing_router.py                        46     18    61%   38-39, 44-47, 52-55, 61-64, 70-73
 marketplaces\carriers.py                                   70      0   100%
-marketplaces\compliance_guard.py                          126      6    95%   95-96, 158, 160, 172, 174
+marketplaces\compliance_guard.py                          153      7    95%   95-96, 156, 158, 170, 172, 222
 marketplaces\emerging_marketplaces.py                      52      0   100%
 marketplaces\emerging_router.py                            41     15    63%   30-31, 36-40, 45-49, 59-65
 marketplaces\flipkart_sync.py                              54      0   100%
@@ -302,33 +304,33 @@ routers\alerts_router.py                                  235     23    90%   10
 routers\autonomous_ai_router.py                           133     35    74%   16-19, 25-26, 66, 83, 104, 115, 125, 135, 145, 152, 160-162, 168-175, 181, 186, 189, 195, 202, 210, 218, 226, 234, 242
 routers\browser_login_router.py                           106     72    32%   10-13, 19-20, 24-27, 31-34, 49-50, 54-57, 63-67, 77-81, 92-99, 114-152, 157-167, 171-174
 routers\cloud_saas_router.py                              150    105    30%   31-102, 116-168, 196-231, 235-247, 253-266, 284, 286-287, 351-385
-routers\config_router.py                                  283     28    90%   75-84, 103, 110, 216-219, 235-250, 261-262
+routers\config_router.py                                  283     18    94%   75-84, 103, 110, 216-219, 234, 239-240, 248-250, 261-262
 routers\core_services_router.py                            18      0   100%
 routers\desktop_control_router.py                         236     69    71%   16-23, 28-34, 39-42, 47-48, 55-58, 64-70, 116-117, 246-247, 249-257, 260-261, 298, 302-303, 343-344, 358-361, 408-410, 430-447
-routers\file_upload_router.py                             201      5    98%   409-414
-routers\financial_routes_router.py                         96     40    58%   18-21, 59, 61, 64-67, 91, 139-141, 151-153, 162-164, 169-171, 176-178, 187-189, 200-202, 209-210, 219-220, 229-230, 235-236
+routers\file_upload_router.py                             201      5    98%   416-421
+routers\financial_routes_router.py                         98     38    61%   19-22, 60, 62, 65-66, 96, 144-146, 156-158, 167-169, 174-176, 181-183, 192-194, 205-207, 214-215, 224-225, 234-235, 240-241
 routers\google_router.py                                   54      0   100%
-routers\health_router.py                                  182     72    60%   79-80, 100, 104, 108-116, 125-135, 164-166, 185-186, 216-218, 227-230, 234-236, 273-274, 294-295, 312-313, 327-328, 345-346, 360-361, 366-370, 376-380, 385-389, 394-398, 403-407, 417
+routers\health_router.py                                  184     68    63%   79-80, 101, 105, 117-120, 131-141, 170-172, 191-192, 222-224, 233-236, 240-242, 279-280, 300-301, 318-319, 333-334, 351-352, 366-367, 372-376, 382-386, 391-395, 400-404, 409-413, 423
 routers\infra_router.py                                     5      0   100%
-routers\legacy_compat_router.py                           317     91    71%   58-61, 72-78, 111, 123-124, 131-132, 139-140, 149, 168-169, 182-183, 192-193, 229-230, 243-244, 249-256, 273, 300-301, 311-312, 317-325, 344-345, 353-354, 359-364, 379-380, 388-389, 402-403, 415-416, 462-464, 489-490, 519-520, 542-543, 594-595, 601-606, 626-633
+routers\legacy_compat_router.py                           320     91    72%   59-62, 73-79, 112, 124-125, 132-133, 140-141, 150, 169-170, 183-184, 193-194, 230-231, 244-245, 250-257, 274, 301-302, 312-313, 318-326, 345-346, 354-355, 360-365, 380-381, 389-390, 403-404, 416-417, 473-475, 500-501, 530-531, 553-554, 605-606, 612-617, 637-644
 routers\marketplace_router.py                              52     31    40%   30-32, 49-50, 78-120, 125-128
 routers\marketplace_stability_router.py                   149     56    62%   34-35, 56-57, 79-80, 88-89, 93-98, 117-118, 131-132, 149-188, 218-220, 259-263, 276-277, 315-317, 323, 333-334, 337-338
 routers\marketplace_sync_router.py                         51     10    80%   44, 48, 74, 99-102, 113-115
 routers\master_router.py                                   24     14    42%   10-14, 19-22, 26-30
-routers\memory_router.py                                   62     27    56%   30, 42, 45-46, 53-78, 84-85, 97-98, 104-105
-routers\observability_router.py                           169     14    92%   89, 94-99, 117, 194-195, 347-348, 404-405
+routers\memory_router.py                                   60     24    60%   31, 66-91, 97-98, 110-111, 117-118
+routers\observability_router.py                           170     13    92%   95-100, 118, 215-216, 368-369, 425-426
 routers\oidc_router.py                                     35     18    49%   36-38, 43-80
-routers\ops_router.py                                     310    104    66%   47, 75-77, 94, 114-115, 136-138, 151-183, 187-188, 192-193, 197-198, 202-203, 207-221, 225-226, 243-245, 251-252, 266, 299-304, 313-314, 339, 364-365, 391-392, 396-397, 401-402, 424-426, 443-444, 448-449, 477-478, 497-498, 516-544, 556-557, 577-581, 611-613, 620-621, 627-628, 632-633, 642-643
+routers\ops_router.py                                     311    100    68%   47, 75-77, 94, 114-115, 136-138, 151-183, 187-188, 192-193, 197-198, 202-203, 207-221, 225-226, 243-245, 251-252, 266, 309-310, 319-320, 345, 370-371, 397-398, 402-403, 407-408, 430-432, 449-450, 454-455, 483-484, 503-504, 522-550, 562-563, 583-587, 617-619, 626-627, 633-634, 638-639, 648-649
 routers\production_hardening_router.py                     42     19    55%   37-39, 47-56, 61-63, 68-70
 routers\production_router.py                               59     30    49%   37-40, 45-50, 54-59, 63-67, 73-74, 83-84, 89-95
 routers\readiness_router.py                                61      2    97%   81, 107
 routers\realtime_policy_router.py                          12      2    83%   13-14
 routers\route_aliases.py                                   31      0   100%
-routers\runtime_router.py                                 762    126    83%   71, 99, 127-133, 137-167, 195, 209, 219-226, 248, 259, 264, 309, 315, 361, 514, 561-570, 586-588, 645-648, 667, 939-940, 956-959, 998-999, 1005, 1007-1009, 1056-1057, 1131-1132, 1220-1221, 1233-1242, 1251-1263, 1268-1270, 1281-1293, 1346, 1356-1357, 1376-1395, 1428-1429, 1442-1443, 1447-1448, 1451-1452, 1455-1458, 1496-1497
+routers\runtime_router.py                                 869     94    89%   72, 100, 128-134, 138-168, 210, 220-227, 274, 319, 325, 386, 635, 682-691, 707-709, 788-789, 808, 909-910, 1007, 1230-1231, 1286, 1344-1345, 1419-1420, 1556-1558, 1572-1577, 1630, 1655-1674, 1704-1705, 1731-1734, 1772-1773
 routers\security_router.py                                149     48    68%   102, 139-171, 176-185, 190-200, 206-207, 302-304
 routers\seller_ai_routes_router.py                         55     25    55%   17-20, 61-64, 78-80, 89-91, 100-102, 112-114, 123-125, 130-132
-routers\seller_erp_router.py                               60     28    53%   48, 78-109, 115, 134-136
-routers\seller_hub_router.py                              149     48    68%   32-34, 69, 73-76, 92-107, 118-124, 137, 186, 191, 196, 201, 206, 211, 216, 221, 229, 234-242, 247, 252, 260, 269, 274, 279
+routers\seller_erp_router.py                               89     14    84%   48, 84, 88, 91, 114-115, 117, 138, 154, 158, 171, 190-192
+routers\seller_hub_router.py                              155     49    68%   39, 46-48, 83, 87-90, 106-121, 132-138, 151, 200, 205, 210, 215, 220, 225, 230, 235, 243, 248-256, 261, 266, 274, 283, 288, 293
 routers\seller_realtime_router.py                         158     33    79%   68, 106-107, 121-122, 134-135, 143-144, 152-153, 163-164, 172-173, 183-184, 196-197, 204-205, 234-235, 237-238, 256-257, 266-267, 278-279, 286-287
 routers\seller_router.py                                  110     41    63%   77-79, 86, 91, 96, 107, 114-119, 124, 170-171, 174-178, 190, 201-202, 207-211, 216-220, 225-229, 234-238
 routers\signup_router.py                                   15      2    87%   47-48
@@ -336,7 +338,7 @@ routers\status_router.py                                   77     14    82%   33
 routers\user_tokens_router.py                              40      0   100%
 routers\video_router.py                                    27     13    52%   22-30, 36-41
 routers\voice_master_router.py                             52     32    38%   27, 32-36, 43-48, 83-91, 112-123, 129-132, 138-142
-routers\voice_router.py                                   247     42    83%   117-118, 125, 175, 225-226, 232-234, 238-239, 263-264, 277-279, 351-353, 364-369, 395-396, 451-452, 491-492, 499-501, 505-506, 520-522, 531-533
+routers\voice_router.py                                   250     43    83%   117-118, 125, 175, 225-226, 232-234, 238-239, 263-264, 277-279, 354, 356-358, 369-374, 400-401, 456-457, 496-497, 504-506, 510-511, 525-527, 536-538
 routers\weather_router.py                                  65      0   100%
 routers\whatsapp_router.py                                 45      0   100%
 run_server.py                                              64     43    33%   34-51, 65, 84-92, 103-123, 127-142, 155
@@ -369,12 +371,12 @@ seller\analytics\ads_optimizer.py                          85      9    89%   26
 seller\analytics\ads_router.py                             50     22    56%   35-36, 41-44, 49-52, 57-60, 65-68, 73-76
 seller\analytics\competitor_price_watch.py                 12      0   100%
 seller\analytics\compliance.py                             42      2    95%   32-33
-seller\analytics\deal_manager.py                           99      0   100%
+seller\analytics\deal_manager.py                          100      0   100%
 seller\analytics\deal_router.py                            54     20    63%   39-40, 45-48, 55-56, 61-64, 69-72, 77-80
 seller\analytics\demand_predictor.py                       16      0   100%
 seller\analytics\dynamic_pricing.py                        32      0   100%
-seller\analytics\keyword_rank_tracker.py                   70      4    94%   38, 41-42, 98
-seller\analytics\listing_analyzer.py                      122     27    78%   12-13, 37, 41-54, 87, 113, 231-263
+seller\analytics\keyword_rank_tracker.py                   71      4    94%   42, 45-46, 102
+seller\analytics\listing_analyzer.py                      122      2    98%   12-13
 seller\analytics\predictive_inventory.py                   38      2    95%   75, 81
 seller\analytics\predictive_router.py                      36     16    56%   36-39, 44-47, 52-55, 60-63
 seller\analytics\rank_router.py                            53     18    66%   34-35, 40-43, 48-51, 58-59, 64-67, 74-75
@@ -390,80 +392,83 @@ seller\analytics\sale_events_router.py                     17      4    76%   24
 seller\analytics\seller_copilot.py                         12      0   100%
 seller\analytics\seo_keyword_engine.py                     25      1    96%   21
 seller\analytics\weekly_report.py                          56      2    96%   24, 81
-seller\erp\csv_importer.py                                 36      3    92%   31-33
-seller\erp\inventory_manager.py                            96      3    97%   114-116
+seller\erp\csv_importer.py                                 52      5    90%   61, 65-68
+seller\erp\inventory_manager.py                           144      4    97%   145-147, 190
 seller\erp\label_generator.py                               8      0   100%
 seller\erp\order_dashboard.py                              13      3    77%   25-27
 seller\erp\shipping_monitor.py                             16      3    81%   26-28
 seller\hub\account_health.py                               96      0   100%
 seller\hub\account_health_router.py                        41     20    51%   31-34, 39-42, 47-50, 55-58, 63-66
-seller\hub\amazon_playwright.py                           105     16    85%   88-91, 131-133, 137, 156-159, 167-168, 176-177
+seller\hub\amazon_playwright.py                           107      2    98%   160-161
 seller\hub\b2b_router.py                                   79     38    52%   41-42, 47-50, 55-58, 63-66, 71-74, 79-82, 87-90, 95-98, 103-106, 111-114
-seller\hub\b2b_wholesale.py                               244     14    94%   28, 33-34, 168, 188-189, 203, 214-218, 226, 244, 317
-seller\hub\base_marketplace_bot.py                         70     38    46%   48-75, 78-84, 88, 92-95, 98-105, 108, 112-118, 122, 149-150, 153
-seller\hub\bulk_label_manifest.py                          56      1    98%   75
+seller\hub\b2b_wholesale.py                               245     14    94%   32, 37-38, 172, 192-193, 207, 218-222, 230, 248, 321
+seller\hub\base_marketplace_bot.py                         71      0   100%
+seller\hub\bulk_label_manifest.py                          55      1    98%   73
 seller\hub\customer_comms.py                               95      1    99%   91
 seller\hub\customer_comms_router.py                        42     16    62%   42-45, 50-53, 58-61, 66-69
 seller\hub\direct_login_manager.py                         31      8    74%   22-24, 33, 35, 37, 39-40
 seller\hub\flipkart_playwright.py                          96     21    78%   36-38, 44, 58-61, 66, 93-95, 99, 112-115, 122-123, 128-129
 seller\hub\human_behavior_engine.py                        31      6    81%   26, 53, 57, 61, 65, 69
 seller\hub\inventory_queue.py                               7      2    71%   21, 24
-seller\hub\inventory_sync_engine.py                       155     13    92%   133-134, 140-141, 180, 209-217
-seller\hub\manifest_generator.py                           94     49    48%   58-61, 73-76, 94, 110-115, 133-156, 160-165, 176-191, 195-199, 207-217, 220-226
-seller\hub\manual_import.py                               137     23    83%   70, 78, 80, 134, 172-173, 178, 183-185, 196, 215-216, 257-259, 270-271, 282-283, 286, 329-330
+seller\hub\inventory_sync_engine.py                       153      0   100%
+seller\hub\manifest_generator.py                           92     12    87%   160-162, 192-196, 212-214, 221-222
+seller\hub\manual_import.py                               137     23    83%   69, 77, 79, 133, 171-172, 177, 182-184, 195, 214-215, 256-258, 269-270, 281-282, 285, 328-329
 seller\hub\marketplace_profiles.py                         51      0   100%
-seller\hub\meesho_playwright.py                            74     30    59%   30-31, 34-36, 42, 56-59, 87-103, 109-110, 115-116
-seller\hub\mobile_features.py                             145      1    99%   68
+seller\hub\meesho_playwright.py                            76      1    99%   42
+seller\hub\mobile_features.py                             146      1    99%   72
 seller\hub\mobile_router.py                                50     16    68%   47-50, 55-58, 63-66, 71-74
-seller\hub\returns_tracker.py                             151      6    96%   102, 110, 165, 194, 289, 291
-seller\hub\review_manager.py                              118     10    92%   32-33, 53, 75-76, 111, 153-154, 190-191
-seller\hub\review_router.py                                50     20    60%   32-33, 38-41, 48-49, 54-57, 62-65, 70-73
-seller\hub\seller_recovery_engine.py                       41     18    56%   30, 33-43, 46-51
-seller\hub\seller_selectors.py                             33      8    76%   97-104
-seller\hub\seller_session_health.py                        50     13    74%   66, 77, 83-93
-seller\hub\unified_order_fetcher.py                        84     21    75%   130-162
+seller\hub\returns_tracker.py                             152      5    97%   108, 116, 171, 295, 297
+seller\hub\review_inbox.py                                114      3    97%   71, 159-160
+seller\hub\review_manager.py                              119     10    92%   36-37, 57, 79-80, 115, 157-158, 194-195
+seller\hub\review_router.py                                77     24    69%   33-34, 39-42, 49-50, 55-58, 63-66, 71-74, 90-91, 105-106
+seller\hub\seller_recovery_engine.py                       39      0   100%
+seller\hub\seller_selectors.py                             33      0   100%
+seller\hub\seller_session_health.py                        48      1    98%   63
+seller\hub\unified_order_fetcher.py                        82     21    74%   127-159
+seller\storage.py                                          12      0   100%
 services\acp_reply.py                                     111     31    72%   137-139, 160-169, 173-182, 186-196, 215, 253, 255, 258-260
-services\acp_safe_mode.py                                 277     31    89%   118-120, 306-309, 374-375, 379, 409-411, 419, 443-445, 469, 510-512, 518, 528-530, 546, 581-582, 596-598
-services\ai_pipeline.py                                  1744    407    77%   17-19, 41-43, 196-197, 216, 230-231, 235-236, 240-241, 255-256, 282-283, 364, 366-368, 448, 532, 540-541, 562, 574-575, 591, 617, 619, 657, 666-676, 682, 686-692, 767-769, 1085, 1102, 1128, 1130-1131, 1169, 1199-1200, 1216-1217, 1226-1227, 1243-1246, 1252, 1291-1292, 1335-1336, 1340-1342, 1353-1354, 1373, 1447, 1450, 1482-1483, 1499, 1505-1507, 1552-1554, 1567, 1579, 1608-1612, 1637-1642, 1685, 1690, 1724, 1732-1738, 1748-1792, 1819, 1883, 1916, 1922-1923, 1946-1947, 1952-1953, 1975, 2002-2003, 2075-2077, 2102-2107, 2172, 2177, 2184, 2193-2195, 2202-2203, 2216-2229, 2233, 2239-2242, 2262-2263, 2311, 2314-2316, 2321-2348, 2576, 2651-2653, 2723, 2755, 2757, 2760-2761, 2777, 2788-2789, 2799, 2843, 2872, 2910-2911, 2914, 2923-2925, 2946, 2950-2952, 2962-2963, 2971, 2979-2982, 3003, 3008-3011, 3029, 3082-3084, 3093, 3122, 3167, 3204-3207, 3211-3215, 3218-3220, 3227-3228, 3236, 3250-3251, 3253-3255, 3271, 3292-3316, 3322-3329, 3366, 3401-3411, 3415-3416, 3422-3425, 3429-3430, 3453-3455, 3471-3483, 3494-3495, 3501-3503, 3524, 3528, 3533-3536, 3539-3544, 3560-3593, 3619-3621, 3624-3627, 3653-3655, 3667-3671, 3673, 3756-3758, 3812, 3814, 3831, 3850, 3877-3882, 3929-3935, 3939-3946
+services\acp_safe_mode.py                                 400     31    92%   438-440, 638-641, 706-707, 711, 741-743, 751, 775-777, 801, 842-844, 850, 860-862, 878, 913-914, 928-930
+services\ai_pipeline.py                                  1788    370    79%   17-19, 41-43, 201-202, 221, 235-236, 240-241, 245-246, 260-261, 287-288, 371-373, 453, 537, 545-546, 567, 579-580, 596, 622, 624, 662, 671-681, 687, 691-697, 708, 772-774, 1090, 1107, 1133, 1135-1136, 1174, 1214-1215, 1233-1234, 1243-1244, 1268-1271, 1296, 1337-1338, 1381-1382, 1386-1388, 1399-1400, 1419, 1493, 1496, 1529-1530, 1546, 1552-1554, 1607-1609, 1627, 1639, 1668-1672, 1705-1706, 1749, 1754, 1800-1803, 1814, 1817, 1827, 1842-1848, 1855-1856, 1886, 1950, 2000-2001, 2024-2025, 2030-2031, 2053, 2080-2081, 2159-2161, 2186-2191, 2256, 2261, 2268, 2286-2287, 2300-2313, 2317, 2323-2326, 2346-2347, 2395, 2398-2400, 2405-2432, 2660, 2735-2737, 2807, 2839, 2841, 2844-2845, 2861, 2872-2873, 2883, 2927, 2956, 2994-2995, 2998, 3007-3009, 3030, 3034-3036, 3046-3047, 3055, 3063-3066, 3087, 3092-3095, 3113, 3166-3168, 3177, 3206, 3251, 3288-3291, 3295-3299, 3302-3304, 3311-3312, 3320, 3334-3335, 3337-3339, 3355, 3376-3400, 3406-3413, 3450, 3485-3495, 3499-3500, 3506-3509, 3513-3514, 3538-3540, 3556-3568, 3579-3580, 3586-3588, 3609, 3613, 3618-3621, 3624-3629, 3645-3678, 3704-3706, 3709-3712, 3738-3740, 3752-3756, 3758, 3841-3843, 3914, 3916, 3933, 3952, 3982-3987, 4034-4040, 4044-4051
 services\ai_runtime_config.py                              94      2    98%   116-117
 services\alert_dispatch.py                                224     70    69%   116-118, 120, 124, 126-129, 144-145, 149, 169-170, 198, 201-245, 272-285, 289-300, 311-315, 439-440
 services\alerts_service.py                                119     52    56%   36-38, 49, 78, 88-135, 145-190, 195-206, 215, 231, 283-286, 293-295, 302
-services\audit_logger.py                                  185     60    68%   56-57, 89, 114-116, 143-146, 154, 165-169, 179, 196-198, 202, 225-227, 230-239, 243, 261-263, 323-350
+services\audit_logger.py                                  195     61    69%   56-57, 91, 100, 125-127, 154-157, 165, 176-180, 190, 207-209, 213, 236-238, 241-250, 254, 272-274, 351-380
 services\background_queue.py                              116     29    75%   56, 72, 74, 92, 100-102, 121-122, 128-130, 148-149, 152-156, 159-165, 168-171
 services\calendar_service.py                              162      0   100%
-services\command_dispatcher.py                            790    166    79%   99-159, 267-268, 298, 304-305, 335-336, 350, 353-354, 361, 365-366, 390, 401-402, 411-412, 479-480, 490-508, 533, 538-539, 557-562, 634, 647-648, 669-670, 687, 689-691, 699, 715-716, 755, 807, 870, 930, 936, 938-939, 952, 980, 990-993, 1020, 1026-1045, 1067-1072, 1076-1079, 1082-1085, 1088-1089, 1208-1213, 1243, 1278, 1326, 1470, 1477, 1500-1501, 1525-1530
+services\command_dispatcher.py                            988    159    84%   101-161, 173-174, 497-498, 528, 534-535, 565-566, 580, 583-584, 591, 595-596, 620, 631-632, 641-642, 709-710, 720-738, 763, 768-769, 787-792, 867, 880-881, 902-903, 925, 927-929, 953-954, 994, 1046, 1240-1242, 1255, 1315, 1321, 1323-1324, 1454, 1464-1467, 1533, 1535-1538, 1560-1565, 1569-1572, 1575-1578, 1581-1582, 1713-1718, 1748, 1783, 1910, 2066, 2089-2090, 2114-2119
 services\command_enrichment.py                             22      0   100%
 services\cricket_alert_service.py                         143     43    70%   72, 83-89, 121-122, 140, 156, 160-174, 179-186, 201-208, 216-217, 219
-services\cricket_service.py                               209     46    78%   67, 141-144, 150-165, 177-186, 200-209, 229, 252-253, 329, 364-366, 375-390
+services\cricket_service.py                               239     41    83%   73, 165-168, 183-188, 201-212, 225-236, 394, 429-431, 455-470
 services\document_store.py                                280      7    98%   311, 337, 518, 564, 638, 642, 648
 services\email_config.py                                   62      6    90%   46, 50, 65, 68, 81-82
 services\evolution_service.py                             122     35    71%   33-34, 84-85, 104-107, 110-111, 123-128, 141, 147-148, 159-161, 218-233
-services\executive_summary.py                              69     13    81%   39-41, 124-137, 158-160
-services\feature_status_reply.py                          211     51    76%   71, 106-107, 110-111, 113, 133, 146, 158, 162, 164, 170, 212, 260-261, 297, 323-325, 336-338, 348-350, 372, 412, 426, 439-457, 469-486, 607, 623-624
+services\executive_summary.py                              69     13    81%   39-41, 126-139, 160-162
+services\feature_status_reply.py                          337     29    91%   71, 106-107, 110-111, 113, 133, 158, 170, 212, 260-261, 297, 323-325, 336-338, 348-350, 372, 412, 426, 496-503, 532, 534, 1078, 1117
 services\gemini_service.py                                 24      9    62%   34-36, 47-56
 services\gmail_service.py                                 126      0   100%
 services\google_workspace.py                               69      0   100%
+services\gst_chat.py                                      272      4    99%   261-262, 516, 550
 services\health_service.py                                 87     13    85%   65, 73-74, 82-83, 133-134, 139-140, 150-151, 157-158
-services\intent_matcher.py                                143      6    96%   22, 26, 125, 182, 184, 548
+services\intent_matcher.py                                153      6    96%   22, 26, 170, 228, 230, 594
 services\intent_semantic.py                                79      3    96%   146-147, 212
 services\jsonl_store.py                                    17      2    88%   26-27
 services\live_rates.py                                     84     20    76%   43, 76, 81, 89-90, 93, 107-108, 148-167
-services\local_seller_hub.py                              174      8    95%   26-27, 38-39, 94-97
-services\memory_intent.py                                  59     22    63%   18, 30-31, 35-42, 46-50, 103, 111-115
-services\memory_service.py                                513     60    88%   43-51, 152-153, 168-169, 213, 243-244, 256-257, 267, 285, 291-292, 322-329, 344-345, 378-379, 390, 401-402, 475-476, 516, 696, 731, 905, 928, 982-983, 1007-1008, 1091-1092, 1109, 1116, 1131-1132, 1150-1151, 1192-1194, 1216-1217, 1249-1250, 1266-1268, 1277-1278, 1280
+services\local_seller_hub.py                              180      8    96%   44-45, 56-57, 110-113
+services\memory_intent.py                                  58     22    62%   18, 32-33, 37-44, 48-52, 105, 113-117
+services\memory_service.py                                540     53    90%   183-184, 199-200, 244, 274-275, 287-288, 298, 316, 322-323, 353-360, 375-376, 409-410, 421, 432-433, 506-507, 547, 727, 926, 1013, 1067-1068, 1092-1093, 1176-1177, 1194, 1201, 1216-1217, 1235-1236, 1277-1279, 1301-1302, 1334-1335, 1351-1353, 1362-1363, 1365
 services\metrics_service.py                                14      3    79%   23-25
 services\morning_digest.py                                 91     21    77%   36-38, 49-50, 78, 98-99, 109-110, 144-147, 154-157, 167, 171-172
 services\oidc_auth.py                                     134     36    73%   64-67, 72-74, 128-137, 216-256
-services\os_control.py                                    330     63    81%   50-51, 59-60, 112-113, 115-117, 119-121, 125-126, 198, 259-276, 293-299, 301-313, 385-386, 410-411, 436-437, 443-446, 471, 476-478, 534-536, 552-553
+services\os_control.py                                    341     59    83%   126-127, 129-131, 133-135, 139-140, 212, 273-290, 307-313, 315-327, 404-405, 429-430, 455-456, 462-465, 490, 495-497, 553-555, 571-572
 services\public_redaction.py                               45      0   100%
 services\redis_cache.py                                   176     50    72%   107-124, 130-131, 134-136, 141-145, 148-149, 154-155, 162-164, 169-170, 185-186, 217, 243, 272-273, 296-308
 services\router_registry.py                                22      4    82%   96-114
 services\screen_vision.py                                  70      0   100%
 services\secret_mask.py                                    21      0   100%
-services\seller_automation_jobs.py                        162     11    93%   226-227, 265, 272-274, 282-284, 291-292
+services\seller_automation_jobs.py                        154      4    97%   277-278, 292, 334
 services\seller_realtime_service.py                       255      4    98%   498-499, 543-544
 services\seller_service.py                                183     24    87%   50, 84-85, 117-118, 190-191, 201-202, 241-242, 262-263, 312-314, 350-352, 364-366, 405-406
-services\seller_tools_reply.py                             55      1    98%   155
+services\seller_tools_reply.py                            396      9    98%   185, 195-196, 591, 818, 823-825, 857
 services\session_store.py                                 113     17    85%   30-31, 50, 88-97, 124, 126, 140, 149, 157
 services\session_vault.py                                 138     15    89%   66, 159-161, 216-218, 223-225, 236, 271, 274-275, 277
 services\settings_service.py                               38      7    82%   58-59, 83, 89-91, 101
@@ -477,11 +482,11 @@ services\tenant_context.py                                131     10    92%   92
 services\tenant_isolation_status.py                        15      0   100%
 services\url_guard.py                                     107     22    79%   89, 91, 93, 95, 99, 118, 144-147, 154-155, 165, 173, 195, 223-230, 233
 services\user_tokens.py                                   131      0   100%
-services\video_intel.py                                   221     66    70%   45-53, 58-83, 87-105, 138-140, 177-178, 182, 198, 216-218, 269-274, 276-282, 378
-services\vision_service.py                                 65      3    95%   62-64
+services\video_intel.py                                   221     66    70%   47-55, 60-85, 89-107, 140-142, 179-180, 184, 200, 218-220, 271-276, 278-284, 380
+services\vision_service.py                                 70      3    96%   62-64
 services\visual_search.py                                 192     13    93%   107, 193-194, 394, 525, 540-541, 574-575, 600, 613-614, 616
 services\voice_service.py                                  74      2    97%   168-169
-services\weather_service.py                               132     20    85%   105, 117-119, 264-265, 274-279, 291-292, 337-339, 342, 369-371
+services\weather_service.py                               134     20    85%   105, 117-119, 264-265, 274-279, 291-292, 355-357, 360, 387-389
 services\web_fetch.py                                      81     20    75%   39-40, 59, 64-77, 120, 148, 158
 services\websocket_service.py                              86     40    53%   18-19, 46-48, 51-52, 59-61, 65, 69-89, 93-117
 services\whatsapp_inbound.py                              113      0   100%
@@ -500,9 +505,9 @@ yleef_security\settings.py                                 48      2    96%   20
 yleef_security\two_factor_auth.py                         306     52    83%   39-40, 267-268, 322-350, 370-392, 505-511, 583, 586-589, 599-601, 637-638
 yleef_security\watermark.py                                84     15    82%   25-32, 95, 116, 170, 173, 178-180
 -------------------------------------------------------------------------------------
-TOTAL                                                   33510   7017    79%</pre></details>
+TOTAL                                                   35474   6686    81%</pre></details>
 <h2>The API surface, module by module</h2>
-<p>620 route handlers in total. 409 of them sit in the 42 files named <code class='cmd'>backend/routers/*_router.py</code>, listed below; the rest are on feature routers and on the application itself elsewhere in the tree. Counted with the same regular expression the audit generator uses, so these add up into the total above.</p>
+<p>625 route handlers in total. 411 of them sit in the 42 files named <code class='cmd'>backend/routers/*_router.py</code>, listed below; the rest are on feature routers and on the application itself elsewhere in the tree. Counted with the same regular expression the audit generator uses, so these add up into the total above.</p>
 <div class="cols">
 <table><tr><th>Router module</th><th>Routes</th></tr>
 <tr><td class='mono'>ops_router.py</td><td class='n' style='font-size:14px'>37</td></tr>
@@ -533,6 +538,7 @@ TOTAL                                                   33510   7017    79%</pre
 <tr><td class='mono'>readiness_router.py</td><td class='n' style='font-size:14px'>6</td></tr>
 <tr><td class='mono'>file_upload_router.py</td><td class='n' style='font-size:14px'>5</td></tr>
 <tr><td class='mono'>marketplace_sync_router.py</td><td class='n' style='font-size:14px'>5</td></tr>
+<tr><td class='mono'>seller_erp_router.py</td><td class='n' style='font-size:14px'>5</td></tr>
 <tr><td class='mono'>user_tokens_router.py</td><td class='n' style='font-size:14px'>5</td></tr>
 <tr><td class='mono'>voice_master_router.py</td><td class='n' style='font-size:14px'>5</td></tr>
 <tr><td class='mono'>production_hardening_router.py</td><td class='n' style='font-size:14px'>4</td></tr>
@@ -540,7 +546,6 @@ TOTAL                                                   33510   7017    79%</pre
 <tr><td class='mono'>marketplace_router.py</td><td class='n' style='font-size:14px'>3</td></tr>
 <tr><td class='mono'>master_router.py</td><td class='n' style='font-size:14px'>3</td></tr>
 <tr><td class='mono'>oidc_router.py</td><td class='n' style='font-size:14px'>3</td></tr>
-<tr><td class='mono'>seller_erp_router.py</td><td class='n' style='font-size:14px'>3</td></tr>
 <tr><td class='mono'>ai_router.py</td><td class='n' style='font-size:14px'>2</td></tr>
 <tr><td class='mono'>signup_router.py</td><td class='n' style='font-size:14px'>2</td></tr>
 <tr><td class='mono'>video_router.py</td><td class='n' style='font-size:14px'>2</td></tr>
@@ -552,10 +557,10 @@ TOTAL                                                   33510   7017    79%</pre
 </table>
 </div>
 <h2>Who wrote it</h2>
-<p>452 commits between 2026-06-18 and 2026-09-26. 443 are mine and 9 are Dependabot&rsquo;s. There are no other contributors and there never were: no contractors, no agency, no freelancers, no third-party code drops. That is what makes the IP assignment one signature instead of a chain of them.</p>
+<p>499 commits between 2026-06-18 and 2026-10-30. 472 are mine and 27 are Dependabot&rsquo;s. There are no other contributors and there never were: no contractors, no agency, no freelancers, no third-party code drops. That is what makes the IP assignment one signature instead of a chain of them.</p>
 <table><tr><th>Author</th><th>Commits</th></tr>
-<tr><td>Prabhudutt Mishra</td><td class='n' style='font-size:14px'>443</td></tr>
-<tr><td>Dependabot (automated dependency updates)</td><td class='n' style='font-size:14px'>9</td></tr>
+<tr><td>Prabhudutt Mishra</td><td class='n' style='font-size:14px'>472</td></tr>
+<tr><td>Dependabot (automated dependency updates)</td><td class='n' style='font-size:14px'>27</td></tr>
 </table>
 <p class="note">One person wrote every human commit. Some early commits carry an older display name and email from another machine&rsquo;s git setup; the history is left exactly as it was, and the per-identity breakdown is shown in diligence. The legal name on the assignment and the purchase agreement is <b>Prabhudutt Mishra</b>.</p>
 <h2>What this page does not prove</h2>
@@ -570,7 +575,7 @@ TOTAL                                                   33510   7017    79%</pre
 <li><b>Code review on a screen-share</b> after an NDA. The NDA is drafted and goes out the same day you ask; after that you pick any command on this page and watch it run against the repository. The repository, with its full history, is delivered at closing.</li>
 <li><b>A fifteen-minute screen-share</b> of the running system, no slides. You choose what to type at it.</li>
 <li><b>The capability schedule</b> is already public: <a href="../capabilities/">yleef.online/capabilities/</a> &mdash; every function, with its endpoint count.</li>
-<li><b>The two-page overview</b>: <a href="../assets/JARVIS-overview.pdf">JARVIS-overview.pdf</a>. The <a href="../">interactive tour</a> and the <a href="https://youtu.be/1BjHig91Fn4">90-second recording</a> ask nothing of you at all.</li>
+<li><b>The overview</b>: <a href="../assets/JARVIS-overview.pdf">JARVIS-overview.pdf</a>. The <a href="../">interactive tour</a> and the <a href="https://youtu.be/1BjHig91Fn4">90-second recording</a> ask nothing of you at all.</li>
 </ul>
-<footer><span>Measured 2026-09-26 on commit 1d58198 &middot; generated from the raw output</span><span><a href="../">Tour</a> &nbsp;&middot;&nbsp; <a href="../capabilities/">Capabilities</a> &nbsp;&middot;&nbsp; <a href="https://youtu.be/1BjHig91Fn4">Recording</a></span></footer>
+<footer><span>Measured 2026-10-31 on commit 1fa90e2 &middot; generated from the raw output</span><span><a href="../">Tour</a> &nbsp;&middot;&nbsp; <a href="../capabilities/">Capabilities</a> &nbsp;&middot;&nbsp; <a href="https://youtu.be/1BjHig91Fn4">Recording</a></span></footer>
 </div>

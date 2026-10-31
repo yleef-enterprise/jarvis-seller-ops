@@ -161,9 +161,9 @@
   <h1>JARVIS</h1>
   <p class="sub">A seller-operations platform for Indian marketplaces, run in <b>Hinglish</b> by voice or text. This page reproduces four real screens with representative data so you can see how it works. It is a walkthrough, not a live instance &mdash; the running system is shown on a screen-share.</p>
   <ul class="stats">
-    <div><b>620</b><span>route handlers</span></div>
-    <div><b>5,705</b><span>tests passing</span></div>
-    <div><b>79%</b><span>coverage</span></div>
+    <div><b>625</b><span>route handlers</span></div>
+    <div><b>9,255</b><span>tests passing</span></div>
+    <div><b>81%</b><span>coverage</span></div>
     <div><b>5</b><span>marketplaces</span></div>
   </ul>
   <p class="sub" style="margin:-16px 0 26px;font-size:14px">Every one of those numbers, what produced it and the command that reproduces it: <a href="proof/" style="color:var(--cyan)">yleef.online/proof/</a>.</p>
@@ -173,12 +173,12 @@
   <button role="tab" id="t1" aria-selected="true" aria-controls="s1">Hinglish assistant</button>
   <button role="tab" id="t2" aria-selected="false" aria-controls="s2">Approval queue</button>
   <button role="tab" id="t3" aria-selected="false" aria-controls="s3">GST invoice</button>
-  <button role="tab" id="t4" aria-selected="false" aria-controls="s4">Money recovery</button>
+  <button role="tab" id="t4" aria-selected="false" aria-controls="s4">Claims &amp; returns</button>
 </nav>
 
 <!-- 1 -->
 <section class="screen" id="s1" role="tabpanel" aria-labelledby="t1">
-  <p class="note">The operator types the way they actually speak. Hinglish command words such as <i>karo</i>, <i>batao</i> and <i>dikhao</i> appear in 58 non-test backend modules, alongside a 567-line intent matcher &mdash; it is not a translation wrapper.</p>
+  <p class="note">The operator types the way they actually speak. Hinglish command words such as <i>karo</i>, <i>batao</i> and <i>dikhao</i> appear in 64 non-test backend modules, alongside a 613-line intent matcher &mdash; it is not a translation wrapper.</p>
   <div class="hud">
     <div class="hud-bar"><span class="dot"></span> AI Interface &mdash; seller session</div>
     <div class="hud-body">
@@ -239,9 +239,9 @@
 
 <!-- 4 -->
 <section class="screen" id="s4" role="tabpanel" aria-labelledby="t4" hidden>
-  <p class="note">Money a seller has already lost and can reclaim. Courier weight overcharges, Amazon SAFE-T reimbursements, failed-delivery actions and return-fraud patterns &mdash; each with the evidence assembled.</p>
+  <p class="note">Claims a seller works one order at a time, from the figures they enter: courier weight disputes, Amazon SAFE-T claims, RTO risk flagged before dispatch, and return-fraud patterns. JARVIS drafts the dispute letter or the claim; it does not read settlement files in bulk or file anything on the seller&rsquo;s behalf.</p>
   <div class="hud">
-    <div class="hud-bar"><span class="dot"></span> Recovery &mdash; open claims</div>
+    <div class="hud-bar"><span class="dot"></span> Claims &amp; returns &mdash; drafts this month</div>
     <div class="hud-body">
       <div class="scroller"><table>
         <thead><tr><th>Claim</th><th>Reference</th><th>Detail</th><th class="num">Value</th></tr></thead>
@@ -251,7 +251,7 @@
           <tr><td>SAFE-T claim</td><td>ORD 403-7719284</td><td>Returned item not received</td><td class="num">&#8377;1,299</td></tr>
           <tr><td>RTO risk</td><td>ORD 403-7719840</td><td>Flagged pre-dispatch, address mismatch</td><td class="num">&#8377;849</td></tr>
           <tr><td>Return fraud</td><td>Buyer 88-2214</td><td>4 returns, 4 SKUs, same month</td><td class="num">&#8377;3,146</td></tr>
-          <tr class="tot"><td colspan="3">Open this month</td><td class="num">&#8377;6,008</td></tr>
+          <tr class="tot"><td colspan="3">Value in this month&rsquo;s drafts</td><td class="num">&#8377;6,008</td></tr>
         </tbody>
       </table></div>
     </div>
@@ -274,7 +274,7 @@
     <li><b>NDA, IP assignment and purchase agreement</b> are already drafted &mdash; sent on request.</li>
     <li><b>Code review on a screen-share</b> after the NDA &mdash; you choose the files and the commands. The code and its full history are delivered at closing.</li>
     <li><b>Live screen-share</b> of the running system, fifteen minutes, whenever suits you.</li>
-    <li><b>2&ndash;4 weeks of handover</b> is included in the sale.</li>
+    <li><b>Thirty days of handover</b> is included in the sale.</li>
   </ul>
 </section>
 
