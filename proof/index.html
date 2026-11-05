@@ -9,10 +9,10 @@
 <meta property="og:title" content="JARVIS &mdash; Verify the numbers">
 <meta property="og:description" content="Every figure quoted for JARVIS, what produced it, and the command that reproduces it.">
 <meta property="og:url" content="https://yleef.online/proof/">
-<meta property="og:image" content="https://yleef.online/assets/01-hinglish.jpg">
+<meta property="og:image" content="https://yleef.online/assets/02-approval-queue.jpg">
 <meta property="og:image:width" content="1920">
 <meta property="og:image:height" content="1080">
-<meta property="og:image:alt" content="JARVIS answering a seller&rsquo;s question in Hinglish">
+<meta property="og:image:alt" content="JARVIS approval queue: a marketplace stock update waiting for a person to approve it">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#060b13">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -88,8 +88,8 @@ justify-content:space-between}
 <h2>The numbers, and where each one comes from</h2>
 <table><tr><th>Measure</th><th>Value</th><th>What it means</th><th>Reproduce with</th></tr>
 <tr><td>Route handlers</td><td class='n'>625</td><td class='note'>42 router modules; 326 POST, 292 GET, 6 DELETE, 1 WEBSOCKET</td><td><code class="cmd">python scripts/generate_audit_report.py</code></td></tr>
-<tr><td>Backend tests run</td><td class='n'>9,255</td><td class='note'>passed on this machine plus 996 subtests, 0 failed, 0 skipped, in 32 minutes</td><td><code class="cmd">python -m pytest -q --cov=. --cov-report=term</code></td></tr>
-<tr><td>Backend line coverage</td><td class='n'>81%</td><td class='note'>35474 statements, 6686 uncovered. CI fails the build below 70%</td><td><code class="cmd">python -m pytest -q --cov=. --cov-fail-under=70</code></td></tr>
+<tr><td>Backend tests run</td><td class='n'>9,255</td><td class='note'>passed on this machine plus 996 subtests, 0 failed, 0 skipped, in 32 minutes</td><td><code class="cmd">cd backend &amp;&amp; python -m pytest -q -p tests.netguard --cov=. --cov-report=term --cov-fail-under=70 --timeout=300</code></td></tr>
+<tr><td>Backend line coverage</td><td class='n'>81%</td><td class='note'>35474 statements, 6686 uncovered. CI fails the build below 70%</td><td><code class="cmd">cd backend &amp;&amp; python -m pytest -q -p tests.netguard --cov=. --cov-report=term --cov-fail-under=70 --timeout=300</code></td></tr>
 <tr><td>Python lines</td><td class='n'>157,174</td><td class='note'>118,277 excluding blanks and comments, in 797 files</td><td><code class="cmd">python scripts/generate_audit_report.py</code></td></tr>
 <tr><td>JS / JSX / TS lines</td><td class='n'>23,848</td><td class='note'>126 files, 54 React components</td><td><code class="cmd">python scripts/generate_audit_report.py</code></td></tr>
 <tr><td>Backend test files</td><td class='n'>336</td><td class='note'>5,369 test functions, which expand into the run count above</td><td><code class="cmd">python scripts/generate_audit_report.py</code></td></tr>
@@ -562,7 +562,7 @@ TOTAL                                                   35474   6686    81%</pre
 <tr><td>Prabhudutt Mishra</td><td class='n' style='font-size:14px'>472</td></tr>
 <tr><td>Dependabot (automated dependency updates)</td><td class='n' style='font-size:14px'>27</td></tr>
 </table>
-<p class="note">One person wrote every human commit. Some early commits carry an older display name and email from another machine&rsquo;s git setup; the history is left exactly as it was, and the per-identity breakdown is shown in diligence. The legal name on the assignment and the purchase agreement is <b>Prabhudutt Mishra</b>.</p>
+<p class="note">One person wrote every human commit. Most of them (402 of 472, from 18 June to 18 October 2026) carry the author&rsquo;s earlier git display name and an email from another machine&rsquo;s setup; the other 70 carry Prabhudutt Mishra. The history is left exactly as it was, and the per-identity breakdown is shown in diligence. The legal name on the assignment and the purchase agreement is <b>Prabhudutt Mishra</b>.</p>
 <h2>What this page does not prove</h2>
 <ul class="plain">
 <li><b>There are no customers and no revenue.</b> Zero. It has been built and tested and has never run for a paying seller. Everything above measures a build, not a business.</li>

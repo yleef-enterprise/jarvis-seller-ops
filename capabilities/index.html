@@ -11,10 +11,10 @@
 <meta property="og:title" content="JARVIS Capability Schedule">
 <meta property="og:description" content="Every JARVIS capability, compiled by parsing the source: marketplace integrations, the approval-gated write path, pricing, GST, returns, the Hinglish assistant and more.">
 <meta property="og:url" content="https://yleef.online/capabilities/">
-<meta property="og:image" content="https://yleef.online/assets/01-hinglish.jpg">
+<meta property="og:image" content="https://yleef.online/assets/02-approval-queue.jpg">
 <meta property="og:image:width" content="1920">
 <meta property="og:image:height" content="1080">
-<meta property="og:image:alt" content="JARVIS answering a seller&rsquo;s question in Hinglish">
+<meta property="og:image:alt" content="JARVIS approval queue: a marketplace stock update waiting for a person to approve it">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#f7f8f7" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#10161b" media="(prefers-color-scheme: dark)">
@@ -195,7 +195,7 @@
 </header>
 
 <div class="method">
-  <p><b>How this was compiled.</b> Every route decorator under <code>backend/</code> was parsed for method, path and handler name. The headline figure &mdash; 625 route handlers across 42 router modules &mdash; is the repository&rsquo;s own generated audit report, which is regenerated and gated in CI, so it cannot drift from the code. Counts below are that parse, not an estimate. Every figure on this page, and the command that reproduces it, is set out at <a href="../proof/">yleef.online/proof/</a>.</p>
+  <p><b>How this was compiled.</b> Every route decorator under <code>backend/</code> was parsed for method, path and handler name. The headline figure &mdash; 625 route handlers, counted across 42 router modules and the feature routers &mdash; is the repository&rsquo;s own generated audit report, regenerated and gated in CI. It is an upper bound on what a given deployment mounts. Counts below are that parse, not an estimate. Every figure on this page, and the command that reproduces it, is set out at <a href="../proof/">yleef.online/proof/</a>.</p>
   <p>An endpoint existing is not proof it does useful work. Where a capability was opened and read, it is described in the terms the code actually supports. Everything found to be narrower than its name suggests is listed under <a href="#caveats">Verified caveats</a> rather than quietly dropped.</p>
 </div>
 
@@ -244,10 +244,10 @@
 </section>
 
 <section class="area" id="s2">
-  <div class="ahead"><h3>The write path</h3><span class="count">no API keys required</span></div>
+  <div class="ahead"><h3>The write path</h3><span class="count">no API keys on this path</span></div>
   <p class="lede">The differentiating mechanism. Instead of holding marketplace API credentials, the operator's own browser session drives the seller portal &mdash; behind an approval queue, rate caps and a compliance guard.</p>
   <dl>
-    <div><dt>Approval queue</dt><dd>Every write is queued with a preview and waits for a human to approve or reject. Nothing reaches a marketplace unreviewed.</dd></div>
+    <div><dt>Approval queue</dt><dd>Every Amazon, Flipkart and Meesho write is queued with a preview and waits for a human to approve or reject. API-token writes (Shopify, Myntra) are rate-limited and audited instead.</dd></div>
     <div><dt>Browser executor</dt><dd>Playwright drives the live seller portal using the operator's logged-in session. Four action types: stock update, price update, order action, listing toggle.</dd></div>
     <div><dt>Session vault</dt><dd>Encrypted storage of browser sessions, with open / verify / reconnect / revoke, plus readiness checks before any run.</dd></div>
     <div><dt>Compliance guard</dt><dd>A deliberate no-stealth, no-CAPTCHA-bypass posture: write caps of 30 per hour per marketplace, 30-second spacing, and pause-on-risk.</dd></div>
@@ -490,7 +490,7 @@
 
 <footer>
   <span>Prabhudutt Mishra &middot; Yleef Enterprise</span>
-  <span><a href="../">Interactive product tour</a> &nbsp;&middot;&nbsp; <a href="../proof/">Verify the numbers</a> &nbsp;&middot;&nbsp; Compiled from source, September 2026</span>
+  <span><a href="../">Interactive product tour</a> &nbsp;&middot;&nbsp; <a href="../proof/">Verify the numbers</a> &nbsp;&middot;&nbsp; Compiled from source at commit 1fa90e2, 31 October 2026</span>
 </footer>
 
 </main>

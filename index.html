@@ -11,10 +11,10 @@
 <meta property="og:title" content="JARVIS Product Tour">
 <meta property="og:description" content="An interactive tour of JARVIS, a seller-operations platform for Indian marketplaces run in Hinglish by voice or text: four real screens, shown with sample data.">
 <meta property="og:url" content="https://yleef.online/">
-<meta property="og:image" content="https://yleef.online/assets/01-hinglish.jpg">
+<meta property="og:image" content="https://yleef.online/assets/02-approval-queue.jpg">
 <meta property="og:image:width" content="1920">
 <meta property="og:image:height" content="1080">
-<meta property="og:image:alt" content="JARVIS answering a seller&rsquo;s question in Hinglish">
+<meta property="og:image:alt" content="JARVIS approval queue: a marketplace stock update waiting for a person to approve it">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#060b13">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -183,7 +183,7 @@
     <div class="hud-bar"><span class="dot"></span> AI Interface &mdash; seller session</div>
     <div class="hud-body">
       <div id="chat">
-        <div class="msg"><span class="who">Jarvis</span><p>Namaste Boss. Main JARVIS hoon, aapki seva ke liye taiyaar hoon. Aaj main aapki kya madad kar sakta hoon?</p></div>
+        <div class="msg"><span class="who">Jarvis</span><p>Namaste. Main JARVIS hoon, aapki seva ke liye taiyaar hoon. Aaj main aapki kya madad kar sakta hoon?</p></div>
       </div>
       <div class="ask" id="asks">
         <button data-i="0">Amazon par returns kam kaise karun?</button>
@@ -196,7 +196,7 @@
 
 <!-- 2 -->
 <section class="screen" id="s2" role="tabpanel" aria-labelledby="t2" hidden>
-  <p class="note">Every marketplace write waits for a person. The executor drives the seller's own logged-in portal session, so no marketplace API keys are needed. Try approving or rejecting one.</p>
+  <p class="note">Every Amazon, Flipkart and Meesho write waits for a person. The executor drives the seller's own logged-in portal session, so this path needs no marketplace API keys; the optional Shopify and Myntra integrations use the seller's own API credentials. Try approving or rejecting one.</p>
   <div class="hud">
     <div class="hud-bar"><span class="dot"></span> Approval queue &mdash; pending writes</div>
     <div class="hud-body" id="queue">
@@ -297,9 +297,9 @@
   });
 
   var replies=[
-    "Amazon par returns kam karne ke liye ye 3 cheezein sabse zyada asar karti hain:<br><br>1. <b>Size chart</b> &mdash; har product ka alag hota hai. Aapke KB-4402 ke 40% returns &quot;size galat&quot; wale hain, aur listing par chart nahi laga hai.<br>2. <b>Material details</b> &mdash; fabric aur wash-care likhiye. Jo listing sirf photo par chalti hai, uske returns 2x hote hain.<br>3. <b>Recent reviews padhiye</b> &mdash; pichhle 30 din mein 3 buyers ne ek hi complaint likhi hai: cable chhoti hai.",
+    "Amazon par KB-4402 (wireless keyboard) ke returns kam karne ke liye ye 3 cheezein sabse zyada asar karti hain:<br><br>1. <b>Compatibility</b> &mdash; listing par saaf likhiye ki Windows, Mac aur Android par chalta hai. Aapke 40% returns &quot;device se connect nahi hua&quot; wale hain.<br>2. <b>Pairing steps</b> &mdash; Bluetooth pairing ke 3 steps listing aur box dono mein daaliye.<br>3. <b>Recent reviews padhiye</b> &mdash; pichhle 30 din mein 3 buyers ne ek hi complaint likhi hai: cable chhoti hai.",
     "Is mahine ka GST abhi tak:<br><br>Taxable value &#8377;2,84,610 &middot; CGST &#8377;25,615 &middot; SGST &#8377;25,615 &middot; IGST &#8377;18,204<br><br>Kul output tax <b>&#8377;69,434</b>. GSTR-1 summary taiyaar hai, 41 invoices. Ek invoice mein HSN missing hai &mdash; INV/2026/0392. Wo theek kar dun?",
-    "Theek hai Boss. Flipkart par SKU KB-4402 ka stock 40 karne ka request queue mein daal diya &mdash; <b>#100</b>.<br><br>Main khud nahi likhunga. Aap approval queue mein jaakar preview dekhiye aur approve kijiye, tabhi ye marketplace par jaayega."
+    "Theek hai. Flipkart par SKU KB-4402 ka stock 40 karne ka request queue mein daal diya &mdash; <b>#100</b>.<br><br>Main khud nahi likhunga. Aap approval queue mein jaakar preview dekhiye aur approve kijiye, tabhi ye marketplace par jaayega."
   ];
   var chat=document.getElementById('chat');
   document.getElementById('asks').addEventListener('click',function(e){
